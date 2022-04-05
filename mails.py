@@ -11,13 +11,13 @@ from globals import g_to_email, g_from_email, g_password_email
 env = Environment(loader=FileSystemLoader('%s/templates/' % os.path.dirname(__file__)))
 
 def get_data():
-    data = data_file_partial
+    data = data_file_filled
     return data
 
 def send_mail(bodyContent):
     to_email = g_to_email
     from_email = g_from_email
-    subject = 'CFDIS con errores reporte mensual'
+    subject = 'CFDIS con errores [Reporte mensual]'
     message = MIMEMultipart()
     message['Subject'] = subject
     message['From'] = from_email
