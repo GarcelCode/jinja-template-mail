@@ -8,20 +8,62 @@
 
     <style>
 
-        section{
-            overflow-x: auto;
-            width: 90%;
+        body{
+            margin: 0;
+            padding: 0;
+        }
+
+        #mail-table-container{
+            width: 100%;
+            border-collapse: collapse;
+            border: 0;
+            border-spacing: 0;
+            background: #ffffff;
+        }
+
+        #mail-conntent-container{
+            width:602px; 
+            border-collapse:collapse; 
+            border:1px solid #cccccc; 
+            border-spacing:0; 
+            text-align: left;
+        }
+
+        #mail-content-header{
+            padding:40px 0 30px 0;
+            background: #70bbd9;
+        }
+
+        #mail-content-body{
+            padding: 36px 30px 42px 30px;
+        }
+
+        #mail-content-footer{
+            padding:30px;
+            background: #ee4c50;
+        }
+
+        section {
             margin-bottom: 10px;
         }
 
-        table{
+        .cfdi-table{
             border-collapse: collapse;
-            text-align: center;
         }
 
-        th, td{
-            border: 1px solid #ddd;
-            padding: 5px 10px;
+        .cfdi-table-row{
+            border: solid 1px rgb(196, 196, 196);
+            padding: 5px;
+        }
+
+        .cfdi-table-row th{
+            border: solid 1px rgb(196, 196, 196);
+            padding: 5px;
+        }
+
+        .cfdi-table-row td{
+            border: solid 1px rgb(196, 196, 196);
+            padding: 5px;
         }
 
         a {
@@ -36,13 +78,31 @@
             background-color: #f08b26;
         }
 
-        a:visited{
-            color: rgb(255, 255, 255);
-        }
-
     </style>
 </head>
 <body>
-    <div id="content">{% block content %}{% endblock %}</div>
+        <table role="presentation" id="mail-table-container">
+            <tr>
+                <td align="center" style="padding:0">
+                    <table role="presentation" id="mail-content-container">
+                        <tr>
+                            <td align="center" id="mail-content-header">
+                                <img src="https://online.visual-paradigm.com/repository/images/91b5f167-b5a8-4c07-811a-8a830368f9ea/email-headers-design/national-tree-day-email-header.png" alt="logoCP" width="300px">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="mail-content-body">
+                                <div id="mail-content-message">{% block content %} {% endblock %}</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="mail-content-footer">
+                                Row 3
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
 </body>
 </html>
