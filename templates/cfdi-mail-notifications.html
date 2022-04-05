@@ -1,0 +1,207 @@
+<DOCTYPE Html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CFDIs Con errores</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+        body {
+            font-family: 'barlow';
+            box-sizing: border-box;
+            padding: 5px;
+        }
+
+        section {
+            width: 100%;
+            overflow-x: auto;
+            margin-bottom: 10px;
+        }
+
+        table {
+            border-collapse: collapse;
+            overflow-x: auto;
+        }
+
+        tr,
+        th,
+        td {
+            border: solid 1px rgb(196, 196, 196);
+            padding: 5px;
+        }
+
+        a {
+            background-color: #E36A00;
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            border-radius: 2px;
+            padding: 3px;
+        }
+
+        a:hover {
+            background-color: #f08b26;
+        }
+    </style>
+</head>
+
+<body>
+
+    <p>Querido <b>{{user.name}}</b> - <b>{{company.name}}</b> estos son los registros que requieren su atención</p>
+
+    <h2>CFDIS con error en el mes actual</h2>
+    {% if cfdis_with_errors_issued is defined %}
+    <h3>CFDIS Emitidos</h3>
+    {% if cfdis_with_errors_issued %}
+    <section>
+        <table>
+            <thead>
+                <tr>
+                    <th>Folio</th>
+                    <th>Serie</th>
+                    <th>UUID</th>
+                    <th>Emisor</th>
+                    <th>Receptor</th>
+                    <th>Fecha Timbrado</th>
+                    <th>Error CFDI</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cfdi in cfdis_with_errors_issued %}
+                <tr>
+                    <td>{{cfdi.Folio or ""}}</td>
+                    <td>{{cfdi.Serie or ""}}</td>
+                    <td>{{cfdi.UUID}}</td>
+                    <td>{{cfdi.NombreEmisor}}</td>
+                    <td>{{cfdi.NombreReceptor}}</td>
+                    <td>{{cfdi.FechaCertificacionSat}}</td>
+                    <td>{{cfdi.errors_string}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+    <a href="#">Más detalles</a>
+    {% else %}
+    <p>No hay CFDIs emitidos con errores</p>
+    {% endif %}
+    {% endif %}
+
+    {% if cfdis_with_errors_received is defined %}
+    <h3>CFDIS Recibidos</h3>
+    {% if cfdis_with_errors_received %}
+    <section>
+        <table>
+            <thead>
+                <tr>
+                    <th>Folio</th>
+                    <th>Serie</th>
+                    <th>UUID</th>
+                    <th>Emisor</th>
+                    <th>Receptor</th>
+                    <th>Fecha Timbrado</th>
+                    <th>Error CFDI</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cfdi in cfdis_with_errors_received %}
+                <tr>
+                    <td>{{cfdi.Folio or ""}}</td>
+                    <td>{{cfdi.Serie or ""}}</td>
+                    <td>{{cfdi.UUID}}</td>
+                    <td>{{cfdi.NombreEmisor}}</td>
+                    <td>{{cfdi.NombreReceptor}}</td>
+                    <td>{{cfdi.FechaCertificacionSat}}</td>
+                    <td>{{cfdi.errors_string}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+    <a href="#">Más detalles</a>
+    {% else %}
+    <p>No hay CFDIs recibidos con errores</p>
+    {% endif %}
+    {% endif %}
+
+    {% if cfdis_canceled is defined %}
+    <h3>CFDIS Cancelados</h3>
+    {% if cfdis_canceled %}
+    <section>
+        <table>
+            <thead>
+                <tr>
+                    <th>Folio</th>
+                    <th>Serie</th>
+                    <th>UUID</th>
+                    <th>Emisor</th>
+                    <th>Receptor</th>
+                    <th>Fecha Timbrado</th>
+                    <th>Fecha Cancelación</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cfdi in cfdis_canceled %}
+                <tr>
+                    <td>{{cfdi.Folio or ""}}</td>
+                    <td>{{cfdi.Serie or ""}}</td>
+                    <td>{{cfdi.UUID}}</td>
+                    <td>{{cfdi.NombreEmisor}}</td>
+                    <td>{{cfdi.NombreReceptor}}</td>
+                    <td>{{cfdi.FechaCertificacionSat}}</td>
+                    <td>{{cfdi.FechaCancelacion}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+    <a href="#">Más detalles</a>
+    {% else %}
+    <p>No hay CFDIs cancelados con errores</p>
+    {% endif %}
+    {% endif %}
+
+    {% if cfdis_with_efos is defined %}
+    <h3>CFDIS con EFOS</h3>
+    {% if cfdis_with_efos %}
+    <section>
+        <table>
+            <thead>
+                <tr>
+                    <th>Folio</th>
+                    <th>Serie</th>
+                    <th>UUID</th>
+                    <th>Emisor</th>
+                    <th>Receptor</th>
+                    <th>Fecha Timbrado</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cfdi in cfdis_with_efos %}
+                <tr>
+                    <td>{{cfdi.Folio or ""}}</td>
+                    <td>{{cfdi.Serie or ""}}</td>
+                    <td>{{cfdi.UUID}}</td>
+                    <td>{{cfdi.NombreEmisor}}</td>
+                    <td>{{cfdi.NombreReceptor}}</td>
+                    <td>{{cfdi.FechaCertificacionSat}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+    <a href="#">Más detalles</a>
+    {% else %}
+    <p>No hay CFDIs con efos erróneos</p>
+    {% endif %}
+    {% endif %}
+
+    <p><i>*La información comprende desde el último correo emitido {{date}} al día en que se recibe este correo.</i>
+    </p>
+
+</body>
+
+</html>
