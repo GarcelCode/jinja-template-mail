@@ -1,42 +1,77 @@
-<DOCTYPE Html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CFDIs Con errores</title>
+    <title>CFDIS con errores</title>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
         body {
-            font-family: 'barlow';
-            box-sizing: border-box;
-            padding: 5px;
+            margin: 0;
+            padding: 0;
+            font-family: barlow;
+        }
+
+        #mail-table-container {
+            width: 100%;
+            border-collapse: collapse;
+            border: 0;
+            border-spacing: 0;
+            background: #ffffff;
+        }
+
+        #mail-conntent-container {
+            width: 602px;
+            border-collapse: collapse;
+            border: 1px solid #cccccc;
+            border-spacing: 0;
+            text-align: left;
+        }
+
+        #mail-content-header {
+            padding: 40px 0 30px 0;
+            background: #70bbd9;
+        }
+
+        #mail-content-body {
+            padding: 36px 30px 42px 30px;
+        }
+
+        #mail-content-footer {
+            padding: 30px;
+            background: #ee4c50;
         }
 
         section {
-            width: 100%;
-            overflow-x: auto;
             margin-bottom: 10px;
         }
 
-        table {
+        .cfdi-table {
             border-collapse: collapse;
-            overflow-x: auto;
         }
 
-        tr,
-        th,
-        td {
+        .cfdi-table-row {
+            border: solid 1px rgb(196, 196, 196);
+            padding: 5px;
+        }
+
+        .cfdi-table-row th {
+            border: solid 1px rgb(196, 196, 196);
+            padding: 5px;
+        }
+
+        .cfdi-table-row td {
             border: solid 1px rgb(196, 196, 196);
             padding: 5px;
         }
 
         a {
-            background-color: #E36A00;
-            color: rgb(255, 255, 255);
+            background-color: #e6e6e6;
+            color: rgb(27, 27, 27);
             text-decoration: none;
             border-radius: 2px;
             padding: 3px;
@@ -45,163 +80,201 @@
         a:hover {
             background-color: #f08b26;
         }
+
+        a:visited{
+            color: rgb(255, 255, 255);
+        }
     </style>
 </head>
 
 <body>
+    <table role="presentation" id="mail-table-container">
+        <tr>
+            <td align="center" style="padding:0">
+                <table role="presentation" id="mail-content-container">
+                    <tr>
+                        <td align="center" id="mail-content-header">
+                            <img src="https://online.visual-paradigm.com/repository/images/91b5f167-b5a8-4c07-811a-8a830368f9ea/email-headers-design/national-tree-day-email-header.png"
+                                alt="logoCP" width="300px">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="mail-content-body">
+                            <div id="mail-content-message">
+                                <p>Querido <b>{{user.name}}</b> - <b>{{company.name}}</b> estos son los registros que
+                                    requieren su atención</p>
 
-    <p>Querido <b>{{user.name}}</b> - <b>{{company.name}}</b> estos son los registros que requieren su atención</p>
+                                <h2>CFDIS con error en el mes actual</h2>
+                                {% if cfdis_with_errors_issued is defined %}
+                                <h3>CFDIS Emitidos</h3>
+                                {% if cfdis_with_errors_issued %}
+                                <section>
+                                    <table class="cfdi-table">
+                                        <thead>
+                                            <tr class="cfdi-table-row">
+                                                <th>Folio</th>
+                                                <th>Serie</th>
+                                                <th>UUID</th>
+                                                <th>Emisor</th>
+                                                <th>Receptor</th>
+                                                <th>Fecha Timbrado</th>
+                                                <th>Error CFDI</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for cfdi in cfdis_with_errors_issued %}
+                                            <tr class="cfdi-table-row">
+                                                <td>{{cfdi.Folio or ""}}</td>
+                                                <td>{{cfdi.Serie or ""}}</td>
+                                                <td>{{cfdi.UUID}}</td>
+                                                <td>{{cfdi.NombreEmisor}}</td>
+                                                <td>{{cfdi.NombreReceptor}}</td>
+                                                <td>{{cfdi.FechaCertificacionSat}}</td>
+                                                <td>{{cfdi.errors_string}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </section>
+                                {% if user.registered %}
+                                <a href={{ base_url + 'validations?period=2022-abril' }}>Más detalles</a>
+                                {% endif %}
+                                {% else %}
+                                <p>No hay CFDIs emitidos con errores</p>
+                                {% endif %}
+                                {% endif %}
 
-    <h2>CFDIS con error en el mes actual</h2>
-    {% if cfdis_with_errors_issued is defined %}
-    <h3>CFDIS Emitidos</h3>
-    {% if cfdis_with_errors_issued %}
-    <section>
-        <table>
-            <thead>
-                <tr>
-                    <th>Folio</th>
-                    <th>Serie</th>
-                    <th>UUID</th>
-                    <th>Emisor</th>
-                    <th>Receptor</th>
-                    <th>Fecha Timbrado</th>
-                    <th>Error CFDI</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for cfdi in cfdis_with_errors_issued %}
-                <tr>
-                    <td>{{cfdi.Folio or ""}}</td>
-                    <td>{{cfdi.Serie or ""}}</td>
-                    <td>{{cfdi.UUID}}</td>
-                    <td>{{cfdi.NombreEmisor}}</td>
-                    <td>{{cfdi.NombreReceptor}}</td>
-                    <td>{{cfdi.FechaCertificacionSat}}</td>
-                    <td>{{cfdi.errors_string}}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </section>
-    <a href="#">Más detalles</a>
-    {% else %}
-    <p>No hay CFDIs emitidos con errores</p>
-    {% endif %}
-    {% endif %}
+                                {% if cfdis_with_errors_received is defined %}
+                                <h3>CFDIS Recibidos</h3>
+                                {% if cfdis_with_errors_received %}
+                                <section>
+                                    <table class="cfdi-table">
+                                        <thead>
+                                            <tr class="cfdi-table-row">
+                                                <th>Folio</th>
+                                                <th>Serie</th>
+                                                <th>UUID</th>
+                                                <th>Emisor</th>
+                                                <th>Receptor</th>
+                                                <th>Fecha Timbrado</th>
+                                                <th>Error CFDI</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for cfdi in cfdis_with_errors_received %}
+                                            <tr class="cfdi-table-row">
+                                                <td>{{cfdi.Folio or ""}}</td>
+                                                <td>{{cfdi.Serie or ""}}</td>
+                                                <td>{{cfdi.UUID}}</td>
+                                                <td>{{cfdi.NombreEmisor}}</td>
+                                                <td>{{cfdi.NombreReceptor}}</td>
+                                                <td>{{cfdi.FechaCertificacionSat}}</td>
+                                                <td>{{cfdi.errors_string}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </section>
+                                {% if user.registered %}
+                                <a href={{ base_url + 'validations?period=2022-abril' }}>Más detalles</a>
+                                {% endif %}
+                                {% else %}
+                                <p>No hay CFDIs recibidos con errores</p>
+                                {% endif %}
+                                {% endif %}
 
-    {% if cfdis_with_errors_received is defined %}
-    <h3>CFDIS Recibidos</h3>
-    {% if cfdis_with_errors_received %}
-    <section>
-        <table>
-            <thead>
-                <tr>
-                    <th>Folio</th>
-                    <th>Serie</th>
-                    <th>UUID</th>
-                    <th>Emisor</th>
-                    <th>Receptor</th>
-                    <th>Fecha Timbrado</th>
-                    <th>Error CFDI</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for cfdi in cfdis_with_errors_received %}
-                <tr>
-                    <td>{{cfdi.Folio or ""}}</td>
-                    <td>{{cfdi.Serie or ""}}</td>
-                    <td>{{cfdi.UUID}}</td>
-                    <td>{{cfdi.NombreEmisor}}</td>
-                    <td>{{cfdi.NombreReceptor}}</td>
-                    <td>{{cfdi.FechaCertificacionSat}}</td>
-                    <td>{{cfdi.errors_string}}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </section>
-    <a href="#">Más detalles</a>
-    {% else %}
-    <p>No hay CFDIs recibidos con errores</p>
-    {% endif %}
-    {% endif %}
+                                {% if cfdis_canceled is defined %}
+                                <h3>CFDIS Cancelados</h3>
+                                {% if cfdis_canceled %}
+                                <section>
+                                    <table class="cfdi-table">
+                                        <thead>
+                                            <tr class="cfdi-table-row">
+                                                <th>Folio</th>
+                                                <th>Serie</th>
+                                                <th>UUID</th>
+                                                <th>Emisor</th>
+                                                <th>Receptor</th>
+                                                <th>Fecha Timbrado</th>
+                                                <th>Fecha Cancelación</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for cfdi in cfdis_canceled %}
+                                            <tr class="cfdi-table-row">
+                                                <td>{{cfdi.Folio or ""}}</td>
+                                                <td>{{cfdi.Serie or ""}}</td>
+                                                <td>{{cfdi.UUID}}</td>
+                                                <td>{{cfdi.NombreEmisor}}</td>
+                                                <td>{{cfdi.NombreReceptor}}</td>
+                                                <td>{{cfdi.FechaCertificacionSat}}</td>
+                                                <td>{{cfdi.FechaCancelacion}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </section>
+                                {% if user.registered %}
+                                <a href={{ base_url
+                                    + 'cfdi-issued?type=ingress&period=2022-abril&state=inactive&cancelled=cmea' }}>Más
+                                    detalles</a>
+                                {% endif %}
+                                {% else %}
+                                <p>No hay CFDIs cancelados con errores</p>
+                                {% endif %}
+                                {% endif %}
 
-    {% if cfdis_canceled is defined %}
-    <h3>CFDIS Cancelados</h3>
-    {% if cfdis_canceled %}
-    <section>
-        <table>
-            <thead>
-                <tr>
-                    <th>Folio</th>
-                    <th>Serie</th>
-                    <th>UUID</th>
-                    <th>Emisor</th>
-                    <th>Receptor</th>
-                    <th>Fecha Timbrado</th>
-                    <th>Fecha Cancelación</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for cfdi in cfdis_canceled %}
-                <tr>
-                    <td>{{cfdi.Folio or ""}}</td>
-                    <td>{{cfdi.Serie or ""}}</td>
-                    <td>{{cfdi.UUID}}</td>
-                    <td>{{cfdi.NombreEmisor}}</td>
-                    <td>{{cfdi.NombreReceptor}}</td>
-                    <td>{{cfdi.FechaCertificacionSat}}</td>
-                    <td>{{cfdi.FechaCancelacion}}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </section>
-    <a href="#">Más detalles</a>
-    {% else %}
-    <p>No hay CFDIs cancelados con errores</p>
-    {% endif %}
-    {% endif %}
+                                {% if cfdis_with_efos is defined %}
+                                <h3>CFDIS con EFOS</h3>
+                                {% if cfdis_with_efos %}
+                                <section>
+                                    <table class="cfdi-table">
+                                        <thead>
+                                            <tr class="cfdi-table-row">
+                                                <th>Folio</th>
+                                                <th>Serie</th>
+                                                <th>UUID</th>
+                                                <th>Emisor</th>
+                                                <th>Receptor</th>
+                                                <th>Fecha Timbrado</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for cfdi in cfdis_with_efos %}
+                                            <tr class="cfdi-table-row">
+                                                <td>{{cfdi.Folio or ""}}</td>
+                                                <td>{{cfdi.Serie or ""}}</td>
+                                                <td>{{cfdi.UUID}}</td>
+                                                <td>{{cfdi.NombreEmisor}}</td>
+                                                <td>{{cfdi.NombreReceptor}}</td>
+                                                <td>{{cfdi.FechaCertificacionSat}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </section>
+                                {% if user.registered %}
+                                <a href={{ base_url + 'efos?type=ingress&period=2022-abril' }}>Más detalles</a>
+                                {% endif %}
+                                {% else %}
+                                <p>No hay CFDIs con efos erróneos</p>
+                                {% endif %}
+                                {% endif %}
 
-    {% if cfdis_with_efos is defined %}
-    <h3>CFDIS con EFOS</h3>
-    {% if cfdis_with_efos %}
-    <section>
-        <table>
-            <thead>
-                <tr>
-                    <th>Folio</th>
-                    <th>Serie</th>
-                    <th>UUID</th>
-                    <th>Emisor</th>
-                    <th>Receptor</th>
-                    <th>Fecha Timbrado</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for cfdi in cfdis_with_efos %}
-                <tr>
-                    <td>{{cfdi.Folio or ""}}</td>
-                    <td>{{cfdi.Serie or ""}}</td>
-                    <td>{{cfdi.UUID}}</td>
-                    <td>{{cfdi.NombreEmisor}}</td>
-                    <td>{{cfdi.NombreReceptor}}</td>
-                    <td>{{cfdi.FechaCertificacionSat}}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </section>
-    <a href="#">Más detalles</a>
-    {% else %}
-    <p>No hay CFDIs con efos erróneos</p>
-    {% endif %}
-    {% endif %}
-
-    <p><i>*La información comprende desde el último correo emitido {{date}} al día en que se recibe este correo.</i>
-    </p>
-
+                                <p><i>*La información comprende desde el último correo emitido {{date}} al día en que se
+                                        recibe este correo.</i></p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="mail-content-footer">
+                            Row 3
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
 </body>
 
 </html>
