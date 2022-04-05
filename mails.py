@@ -15,8 +15,8 @@ def get_data():
     return data
 
 def send_mail(bodyContent):
-    to_email = 'garcelcode@gmail.com'
-    from_email = 'testmail.gcdev@gmail.com'
+    to_email = ''
+    from_email = ''
     subject = 'CFDIS con errores reporte mensual'
     message = MIMEMultipart()
     message['Subject'] = subject
@@ -28,7 +28,7 @@ def send_mail(bodyContent):
 
     server = SMTP('smtp.gmail.com', 587)
     server.starttls()
-    server.login(from_email, '@Gogl/test;')
+    server.login(from_email, '')
     server.sendmail(from_email, to_email, msgBody)
     server.quit()
 
