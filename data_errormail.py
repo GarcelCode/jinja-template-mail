@@ -1,6 +1,8 @@
 data_file_filled = {
+    'base_url':'http://localhost:3000/',
     'user':{
         'name':'Samuel',
+        'registered':True
     },
     'company':{
         'name':'EZKORP',
@@ -345,8 +347,9 @@ data_file_filled = {
 }
 
 data_file_partial = {
-     'user':{
+    'user':{
         'name':'Samuel',
+        'registered':True
     },
     'company':{
         'name':'EZKORP',
@@ -532,6 +535,7 @@ data_file_partial = {
 data_file_empty = {
      'user':{
         'name':'Samuel',
+        'registered':True
     },
     'company':{
         'name':'EZKORP',
