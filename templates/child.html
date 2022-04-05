@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
-<p>Querido <b>{{data.user.name}}</b> - <b>{{data.company.name}}</b> estos son los registros que requieren su atención</p>
+<p>Querido <b>{{user.name}}</b> - <b>{{company.name}}</b> estos son los registros que requieren su atención</p>
 
 <h2>CFDIS con error en el mes actual</h2>
-{% if data.cfdis_with_errors_issued is defined %}
+{% if cfdis_with_errors_issued is defined %}
 <h3>CFDIS Emitidos</h3>
-{% if data.cfdis_with_errors_issued|length != 0 %}
+{% if cfdis_with_errors_issued|length != 0 %}
 <section>
   <table>
     <thead>
@@ -20,7 +20,7 @@
       </tr>
     </thead>
     <tbody>
-      {% for cfdi in data.cfdis_with_errors_issued %}
+      {% for cfdi in cfdis_with_errors_issued %}
       <tr>
         <td>{{cfdi.Folio or ""}}</td>
         <td>{{cfdi.Serie or ""}}</td>
@@ -40,9 +40,9 @@
 {% endif %}
 {% endif %}
 
-{% if data.cfdis_with_errors_received is defined %}
+{% if cfdis_with_errors_received is defined %}
 <h3>CFDIS Recibidos</h3>
-{% if data.cfdis_with_errors_received|length != 0 %}
+{% if cfdis_with_errors_received|length != 0 %}
 <section>
   <table>
     <thead>
@@ -57,7 +57,7 @@
       </tr>
     </thead>
     <tbody>
-      {% for cfdi in data.cfdis_with_errors_received %}
+      {% for cfdi in cfdis_with_errors_received %}
       <tr>
         <td>{{cfdi.Folio or ""}}</td>
         <td>{{cfdi.Serie or ""}}</td>
@@ -77,9 +77,9 @@
 {% endif %}
 {% endif %}
 
-{% if data.cfdis_canceled is defined %}
+{% if cfdis_canceled is defined %}
 <h3>CFDIS Cancelados</h3>
-{% if data.cfdis_canceled|length != 0 %}
+{% if cfdis_canceled|length != 0 %}
 <section>
   <table>
     <thead>
@@ -94,7 +94,7 @@
       </tr>
     </thead>
     <tbody>
-      {% for cfdi in data.cfdis_canceled %}
+      {% for cfdi in cfdis_canceled %}
       <tr>
         <td>{{cfdi.Folio or ""}}</td>
         <td>{{cfdi.Serie or ""}}</td>
@@ -114,9 +114,9 @@
 {% endif %}
 {% endif %}
 
-{% if data.cfdis_with_efos is defined %}
+{% if cfdis_with_efos is defined %}
 <h3>CFDIS con EFOS</h3>
-{% if data.cfdis_with_efos|length != 0 %}
+{% if cfdis_with_efos|length != 0 %}
 <section>
   <table>
     <thead>
@@ -130,7 +130,7 @@
       </tr>
     </thead>
     <tbody>
-      {% for cfdi in data.cfdis_with_efos %}
+      {% for cfdi in cfdis_with_efos %}
       <tr>
         <td>{{cfdi.Folio or ""}}</td>
         <td>{{cfdi.Serie or ""}}</td>
