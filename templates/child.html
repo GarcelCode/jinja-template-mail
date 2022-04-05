@@ -7,9 +7,9 @@
 <h3>CFDIS Emitidos</h3>
 {% if cfdis_with_errors_issued|length != 0 %}
 <section>
-  <table>
+  <table class="cfdi-table">
     <thead>
-      <tr>
+      <tr class="cfdi-table-row">
         <th>Folio</th>
         <th>Serie</th>
         <th>UUID</th>
@@ -21,7 +21,7 @@
     </thead>
     <tbody>
       {% for cfdi in cfdis_with_errors_issued %}
-      <tr>
+      <tr class="cfdi-table-row">
         <td>{{cfdi.Folio or ""}}</td>
         <td>{{cfdi.Serie or ""}}</td>
         <td>{{cfdi.UUID}}</td>
@@ -34,7 +34,9 @@
     </tbody>
   </table>
 </section>
-<a href="#">Más detalles</a>
+{% if user.registered %}
+  <a href={{ base_url + 'validations?period=2022-abril' }}>Más detalles</a>
+{% endif %}
 {% else %}
 <p>No hay CFDIs emitidos con errores</p>
 {% endif %}
@@ -44,9 +46,9 @@
 <h3>CFDIS Recibidos</h3>
 {% if cfdis_with_errors_received|length != 0 %}
 <section>
-  <table>
+  <table class="cfdi-table">
     <thead>
-      <tr>
+      <tr class="cfdi-table-row">
         <th>Folio</th>
         <th>Serie</th>
         <th>UUID</th>
@@ -58,7 +60,7 @@
     </thead>
     <tbody>
       {% for cfdi in cfdis_with_errors_received %}
-      <tr>
+      <tr class="cfdi-table-row">
         <td>{{cfdi.Folio or ""}}</td>
         <td>{{cfdi.Serie or ""}}</td>
         <td>{{cfdi.UUID}}</td>
@@ -71,7 +73,9 @@
     </tbody>
   </table>
 </section>
-<a href="#">Más detalles</a>
+{% if user.registered %}
+  <a href={{ base_url + 'validations?period=2022-abril' }}>Más detalles</a>
+{% endif %}
 {% else %}
 <p>No hay CFDIs recibidos con errores</p>
 {% endif %}
@@ -81,9 +85,9 @@
 <h3>CFDIS Cancelados</h3>
 {% if cfdis_canceled|length != 0 %}
 <section>
-  <table>
+  <table class="cfdi-table">
     <thead>
-      <tr>
+      <tr class="cfdi-table-row">
         <th>Folio</th>
         <th>Serie</th>
         <th>UUID</th>
@@ -95,7 +99,7 @@
     </thead>
     <tbody>
       {% for cfdi in cfdis_canceled %}
-      <tr>
+      <tr class="cfdi-table-row">
         <td>{{cfdi.Folio or ""}}</td>
         <td>{{cfdi.Serie or ""}}</td>
         <td>{{cfdi.UUID}}</td>
@@ -108,7 +112,9 @@
     </tbody>
   </table>
 </section>
-<a href="#">Más detalles</a>
+{% if user.registered %}
+  <a href={{ base_url + 'cfdi-issued?type=ingress&period=2022-abril&state=inactive&cancelled=cmea' }}>Más detalles</a>
+{% endif %}
 {% else %}
 <p>No hay CFDIs cancelados con errores</p>
 {% endif %}
@@ -118,9 +124,9 @@
 <h3>CFDIS con EFOS</h3>
 {% if cfdis_with_efos|length != 0 %}
 <section>
-  <table>
+  <table class="cfdi-table">
     <thead>
-      <tr>
+      <tr class="cfdi-table-row">
         <th>Folio</th>
         <th>Serie</th>
         <th>UUID</th>
@@ -131,7 +137,7 @@
     </thead>
     <tbody>
       {% for cfdi in cfdis_with_efos %}
-      <tr>
+      <tr class="cfdi-table-row">
         <td>{{cfdi.Folio or ""}}</td>
         <td>{{cfdi.Serie or ""}}</td>
         <td>{{cfdi.UUID}}</td>
@@ -143,7 +149,9 @@
     </tbody>
   </table>
 </section>
-<a href="#">Más detalles</a>
+{% if user.registered %}
+  <a href={{ base_url + 'efos?type=ingress&period=2022-abril' }}>Más detalles</a>
+{% endif %}
 {% else %}
 <p>No hay CFDIs con efos erróneos</p>
 {% endif %}
