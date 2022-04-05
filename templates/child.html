@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% block content %}
+<p>Querido <b>{{data.user.name}}</b> - <b>{{data.company.name}}</b> estos son los registros que requieren su atención</p>
+
+<h2>CFDIS con error en el mes actual</h2>
+{% if data.cfdis_with_errors_issued is defined %}
+<h3>CFDIS Emitidos</h3>
+{% if data.cfdis_with_errors_issued|length != 0 %}
+<section>
+  <table>
+    <thead>
+      <tr>
+        <th>Folio</th>
+        <th>Serie</th>
+        <th>UUID</th>
+        <th>Emisor</th>
+        <th>Receptor</th>
+        <th>Fecha Timbrado</th>
+        <th>Error CFDI</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for cfdi in data.cfdis_with_errors_issued %}
+      <tr>
+        <td>{{cfdi.Folio or ""}}</td>
+        <td>{{cfdi.Serie or ""}}</td>
+        <td>{{cfdi.UUID}}</td>
+        <td>{{cfdi.NombreEmisor}}</td>
+        <td>{{cfdi.NombreReceptor}}</td>
+        <td>{{cfdi.FechaCertificacionSat}}</td>
+        <td>{{cfdi.errors_string}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+<a href="#">Más detalles</a>
+{% else %}
+<p>No hay CFDIs emitidos con errores</p>
+{% endif %}
+{% endif %}
+
+{% if data.cfdis_with_errors_received is defined %}
+<h3>CFDIS Recibidos</h3>
+{% if data.cfdis_with_errors_received|length != 0 %}
+<section>
+  <table>
+    <thead>
+      <tr>
+        <th>Folio</th>
+        <th>Serie</th>
+        <th>UUID</th>
+        <th>Emisor</th>
+        <th>Receptor</th>
+        <th>Fecha Timbrado</th>
+        <th>Error CFDI</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for cfdi in data.cfdis_with_errors_received %}
+      <tr>
+        <td>{{cfdi.Folio or ""}}</td>
+        <td>{{cfdi.Serie or ""}}</td>
+        <td>{{cfdi.UUID}}</td>
+        <td>{{cfdi.NombreEmisor}}</td>
+        <td>{{cfdi.NombreReceptor}}</td>
+        <td>{{cfdi.FechaCertificacionSat}}</td>
+        <td>{{cfdi.errors_string}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+<a href="#">Más detalles</a>
+{% else %}
+<p>No hay CFDIs recibidos con errores</p>
+{% endif %}
+{% endif %}
+
+{% if data.cfdis_canceled is defined %}
+<h3>CFDIS Cancelados</h3>
+{% if data.cfdis_canceled|length != 0 %}
+<section>
+  <table>
+    <thead>
+      <tr>
+        <th>Folio</th>
+        <th>Serie</th>
+        <th>UUID</th>
+        <th>Emisor</th>
+        <th>Receptor</th>
+        <th>Fecha Timbrado</th>
+        <th>Fecha Cancelación</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for cfdi in data.cfdis_canceled %}
+      <tr>
+        <td>{{cfdi.Folio or ""}}</td>
+        <td>{{cfdi.Serie or ""}}</td>
+        <td>{{cfdi.UUID}}</td>
+        <td>{{cfdi.NombreEmisor}}</td>
+        <td>{{cfdi.NombreReceptor}}</td>
+        <td>{{cfdi.FechaCertificacionSat}}</td>
+        <td>{{cfdi.FechaCancelacion}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+<a href="#">Más detalles</a>
+{% else %}
+<p>No hay CFDIs cancelados con errores</p>
+{% endif %}
+{% endif %}
+
+{% if data.cfdis_with_efos is defined %}
+<h3>CFDIS con EFOS</h3>
+{% if data.cfdis_with_efos|length != 0 %}
+<section>
+  <table>
+    <thead>
+      <tr>
+        <th>Folio</th>
+        <th>Serie</th>
+        <th>UUID</th>
+        <th>Emisor</th>
+        <th>Receptor</th>
+        <th>Fecha Timbrado</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for cfdi in data.cfdis_with_efos %}
+      <tr>
+        <td>{{cfdi.Folio or ""}}</td>
+        <td>{{cfdi.Serie or ""}}</td>
+        <td>{{cfdi.UUID}}</td>
+        <td>{{cfdi.NombreEmisor}}</td>
+        <td>{{cfdi.NombreReceptor}}</td>
+        <td>{{cfdi.FechaCertificacionSat}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+<a href="#">Más detalles</a>
+{% else %}
+<p>No hay CFDIs con efos erróneos</p>
+{% endif %}
+{% endif %}
+
+<p><i>*La información comprende desde el último correo emitido {{date}} al día en que se recibe este correo.</i></p>
+{% endblock %}
