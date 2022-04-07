@@ -9,6 +9,7 @@ from data_errormail import data_file_filled, data_file_partial, data_file_empty
 from data_efosmail import efos_data_file_filled
 from data_confirmmail import confirm_data
 from data_temporarypass import data_pass
+from efirma_mail import efirma_data
 from globals import g_to_email, g_from_email, g_password_email
 
 env = Environment(loader=FileSystemLoader('%s/templates/' % os.path.dirname(__file__)))
