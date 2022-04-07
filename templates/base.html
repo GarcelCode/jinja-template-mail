@@ -29,18 +29,18 @@
             text-align: left;
         }
 
-        #mail-content-header{
-            padding:40px 0 30px 0;
-            background: #70bbd9;
+        #mail-content-header {
+            padding: 40px 0 30px 0;
+            background: #e36a00;
         }
 
-        #mail-content-body{
+        #mail-content-body {
             padding: 36px 30px 42px 30px;
         }
 
-        #mail-content-footer{
-            padding:30px;
-            background: #ee4c50;
+        #mail-content-footer {
+            padding: 30px;
+            background: #274E75;
         }
 
         section {
@@ -67,8 +67,8 @@
         }
 
         a {
-            background-color: #E36A00;
-            color: rgb(255, 255, 255);
+            background-color: #e6e6e6;
+            color: rgb(27, 27, 27);
             text-decoration: none;
             border-radius: 2px;
             padding: 3px;
@@ -76,6 +76,10 @@
 
         a:hover {
             background-color: #f08b26;
+        }
+
+        #p-footer{
+            color: white;
         }
 
     </style>
@@ -92,12 +96,14 @@
                         </tr>
                         <tr>
                             <td id="mail-content-body">
-                                <div id="mail-content-message">{% block content %} {% endblock %}</div>
+                                <div id="mail-content-message">
+                                <!--Content here-->
+                                </div>
                             </td>
                         </tr>
                         <tr>
-                            <td id="mail-content-footer">
-                                Row 3
+                            <td align="center" id="mail-content-footer">
+                                <p id="p-footer">Has recibido este correo por ser usuario de los servicios de SoluciónCP</p>
                             </td>
                         </tr>
                     </table>
