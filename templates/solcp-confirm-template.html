@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CFDIS con errores</title>
+
+    <style>
+
+        body{
+            margin: 0;
+            padding: 0;
+        }
+
+        #mail-table-container{
+            width: 100%;
+            border-collapse: collapse;
+            border: 0;
+            border-spacing: 0;
+            background: #ffffff;
+        }
+
+        #mail-conntent-container{
+            width:602px; 
+            border-collapse:collapse; 
+            border:1px solid #cccccc; 
+            border-spacing:0; 
+            text-align: left;
+        }
+
+        #mail-content-header {
+            padding: 40px 0 30px 0;
+            background: #e36a00;
+        }
+
+        #mail-content-body {
+            padding: 36px 30px 42px 30px;
+        }
+
+        #mail-content-footer {
+            padding: 30px;
+            background: #274E75;
+        }
+
+        section {
+            margin-bottom: 10px;
+        }
+
+        .cfdi-table{
+            border-collapse: collapse;
+        }
+
+        .cfdi-table-row{
+            border: solid 1px rgb(196, 196, 196);
+            padding: 5px;
+        }
+
+        .cfdi-table-row th{
+            border: solid 1px rgb(196, 196, 196);
+            padding: 5px;
+        }
+
+        .cfdi-table-row td{
+            border: solid 1px rgb(196, 196, 196);
+            padding: 5px;
+        }
+
+        a {
+            background-color: #e6e6e6;
+            color: rgb(27, 27, 27);
+            text-decoration: none;
+            border-radius: 2px;
+            padding: 3px;
+        }
+
+        a:hover {
+            background-color: #f08b26;
+        }
+
+        #p-footer{
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+        <table role="presentation" id="mail-table-container">
+            <tr>
+                <td align="center" style="padding:0">
+                    <table role="presentation" id="mail-content-container">
+                        <tr>
+                            <td align="center" id="mail-content-header">
+                                <img src="https://online.visual-paradigm.com/repository/images/91b5f167-b5a8-4c07-811a-8a830368f9ea/email-headers-design/national-tree-day-email-header.png" alt="logoCP" width="300px">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="mail-content-body">
+                                <div id="mail-content-message">
+                                    <h2>Completa el registro</h2>
+                                    <p style="text-align: end;"> 
+                                        {{date}}
+                                    </p>
+                                    <p><b>¡Bienvenido(a): {{user.name}}!</b></p> 
+                                    <p>Gracias por registrarte en CPAudita, estás a sólo un paso de iniciar tu experiencia con la aplicación</p>
+                                    <p>Confirma tu registro haciendo click en el siguiente vínculo: </p>
+                                    <table style="width:100%">
+                                        <tr align="center">
+                                            <td><a href={{confirmUrl}}>Confirmar correo</a></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" id="mail-content-footer">
+                                <p id="p-footer">Has recibido este correo por ser usuario de los servicios de SoluciónCP</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+</body>
+</html>
