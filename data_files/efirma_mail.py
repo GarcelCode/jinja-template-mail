@@ -1,6 +1,6 @@
+from data_files.global_values import company
+
 efirma_data = {
-    'company':{
-        'name':'EZKORP',
-    },
+    'company':company,
     'dias':9,
 }

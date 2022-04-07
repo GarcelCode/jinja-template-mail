@@ -1,7 +1,5 @@
+from data_files.global_values import user
+
 data_pass = {
-    'user':{
-        'name':'Rene',
-        'email':'me@renevillegasr.com',
-        'password':'9BzTAh:7',
-    }
+    'user': user
 }
