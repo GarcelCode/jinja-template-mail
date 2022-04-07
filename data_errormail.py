@@ -273,7 +273,7 @@ data_file_filled = {
         'NombreEmisor':'Randolph Scottie',
         'FechaCertificacionSat':'2019-03-20 19:05:02',
         'Estatus':'DEFINITIVE',
-        'Total':'1,000.00',
+        'Total': 1000,
     },{
         'Folio':'653',
         'Serie':'DVGL',
@@ -281,7 +281,7 @@ data_file_filled = {
         'NombreEmisor':'Charisma Aidan',
         'FechaCertificacionSat':'2019-06-25 21:13:05',
         'Estatus':'DISTORTED',
-        'Total':'2,875.52',
+        'Total': 2875.52,
     },{
         'Folio':'5414',
         'Serie':'DLS',
@@ -289,7 +289,7 @@ data_file_filled = {
         'NombreEmisor':'Jared Bobby',
         'FechaCertificacionSat':'2017-06-05 20:30:23',
         'Estatus':'DEFINITIVE',
-        'Total':'8,589.25',
+        'Total': 8589.25,
     },{
         'Folio':'5418',
         'Serie':'GDLS',
@@ -297,7 +297,7 @@ data_file_filled = {
         'NombreEmisor':'Noble Roxana',
         'FechaCertificacionSat':'2021-05-19 05:35:32',
         'Estatus':'ALLEGED',
-        'Total': '896.50',
+        'Total': 896.5,
     },{
         'Folio':'4253',
         'Serie':'DNDI',
@@ -305,7 +305,7 @@ data_file_filled = {
         'NombreEmisor':'Deon Montana',
         'FechaCertificacionSat':'2021-09-13 03:54:44',
         'Estatus':'ALLEGED',
-        'Total':'1,953.47',
+        'Total': 1953.47,
     },{
         'Folio':'6111',
         'Serie':'INDI',
@@ -313,7 +313,7 @@ data_file_filled = {
         'NombreEmisor':'Lizbeth Ollie',
         'FechaCertificacionSat':'2018-06-09 13:22:54',
         'Estatus':'DISTORTED',
-        'Total':'15,256.32',
+        'Total': 15256.32,
     },{
         'Folio':'5743',
         'Serie':'BNDI',
@@ -321,7 +321,7 @@ data_file_filled = {
         'NombreEmisor':'Branda Chase',
         'FechaCertificacionSat':'2018-04-09 13:36:42',
         'Estatus':'DEFINITIVE',
-        'Total':'2,347.65',
+        'Total': 2347.65,
     },{
         'Folio':'4477',
         'Serie':'DNDI',
@@ -329,7 +329,7 @@ data_file_filled = {
         'NombreEmisor':'Callista Beth',
         'FechaCertificacionSat':'2019-08-18 00:28:13',
         'Estatus':'ALLEGED',
-        'Total':'9,458.22',
+        'Total': 9458.22,
     },{
         'Folio':'6605',
         'Serie':'DNDI',
@@ -337,7 +337,7 @@ data_file_filled = {
         'NombreEmisor':'Tillie Pene',
         'FechaCertificacionSat':'2017-05-22 05:09:21',
         'Estatus':'DEFINITIVE',
-        'Total':'3,758.00',
+        'Total': 3758.00,
     },{
         'Folio':'2588',
         'Serie':'VGDL',
@@ -345,7 +345,7 @@ data_file_filled = {
         'NombreEmisor':'Clement Delicia',
         'FechaCertificacionSat':'2021-07-16 05:00:00',
         'Estatus':'DEFINITIVE',
-        'Total':'5,798.22',
+        'Total': 5798.22,
     },{
         'Folio':'1909',
         'Serie':'VGDL',
@@ -353,14 +353,15 @@ data_file_filled = {
         'NombreEmisor':'Racheal Tim',
         'FechaCertificacionSat':'2017-11-08 05:09:20',
         'Estatus':'FAVORABLE_JUDGMENT',
-        'Total':'22,897.05',
+        'Total': 22897.05,
     }]
 }
 
 data_file_partial = {
+    'base_url':'http://localhost:3000/',
     'user':{
         'name':'Samuel',
-        'registered':True
+        'registered':True,
     },
     'company':{
         'name':'EZKORP',
@@ -471,7 +472,7 @@ data_file_partial = {
         'NombreEmisor':'Randolph Scottie',
         'FechaCertificacionSat':'2019-03-20 19:05:02',
         'Estatus':'DEFINITIVE',
-        'Total':'1,000.00',
+        'Total': 1000,
     },{
         'Folio':'653',
         'Serie':'DVGL',
@@ -479,7 +480,7 @@ data_file_partial = {
         'NombreEmisor':'Charisma Aidan',
         'FechaCertificacionSat':'2019-06-25 21:13:05',
         'Estatus':'DISTORTED',
-        'Total':'2,875.52',
+        'Total': 2875.52,
     },{
         'Folio':'5414',
         'Serie':'DLS',
@@ -487,7 +488,7 @@ data_file_partial = {
         'NombreEmisor':'Jared Bobby',
         'FechaCertificacionSat':'2017-06-05 20:30:23',
         'Estatus':'DEFINITIVE',
-        'Total':'8,589.25',
+        'Total': 8589.25,
     },{
         'Folio':'5418',
         'Serie':'GDLS',
@@ -495,7 +496,7 @@ data_file_partial = {
         'NombreEmisor':'Noble Roxana',
         'FechaCertificacionSat':'2021-05-19 05:35:32',
         'Estatus':'ALLEGED',
-        'Total': '896.50',
+        'Total': 896.5,
     },{
         'Folio':'4253',
         'Serie':'DNDI',
@@ -503,7 +504,7 @@ data_file_partial = {
         'NombreEmisor':'Deon Montana',
         'FechaCertificacionSat':'2021-09-13 03:54:44',
         'Estatus':'ALLEGED',
-        'Total':'1,953.47',
+        'Total': 1953.47,
     },{
         'Folio':'6111',
         'Serie':'INDI',
@@ -511,7 +512,7 @@ data_file_partial = {
         'NombreEmisor':'Lizbeth Ollie',
         'FechaCertificacionSat':'2018-06-09 13:22:54',
         'Estatus':'DISTORTED',
-        'Total':'15,256.32',
+        'Total': 15256.32,
     },{
         'Folio':'5743',
         'Serie':'BNDI',
@@ -519,7 +520,7 @@ data_file_partial = {
         'NombreEmisor':'Branda Chase',
         'FechaCertificacionSat':'2018-04-09 13:36:42',
         'Estatus':'DEFINITIVE',
-        'Total':'2,347.65',
+        'Total': 2347.65,
     },{
         'Folio':'4477',
         'Serie':'DNDI',
@@ -527,7 +528,7 @@ data_file_partial = {
         'NombreEmisor':'Callista Beth',
         'FechaCertificacionSat':'2019-08-18 00:28:13',
         'Estatus':'ALLEGED',
-        'Total':'9,458.22',
+        'Total': 9458.22,
     },{
         'Folio':'6605',
         'Serie':'DNDI',
@@ -535,7 +536,7 @@ data_file_partial = {
         'NombreEmisor':'Tillie Pene',
         'FechaCertificacionSat':'2017-05-22 05:09:21',
         'Estatus':'DEFINITIVE',
-        'Total':'3,758.00',
+        'Total': 3758.00,
     },{
         'Folio':'2588',
         'Serie':'VGDL',
@@ -543,7 +544,7 @@ data_file_partial = {
         'NombreEmisor':'Clement Delicia',
         'FechaCertificacionSat':'2021-07-16 05:00:00',
         'Estatus':'DEFINITIVE',
-        'Total':'5,798.22',
+        'Total': 5798.22,
     },{
         'Folio':'1909',
         'Serie':'VGDL',
@@ -551,7 +552,7 @@ data_file_partial = {
         'NombreEmisor':'Racheal Tim',
         'FechaCertificacionSat':'2017-11-08 05:09:20',
         'Estatus':'FAVORABLE_JUDGMENT',
-        'Total':'22,897.05',
+        'Total': 22897.05,
     }]
 }
 
