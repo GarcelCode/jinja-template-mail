@@ -34,7 +34,7 @@
 
         #mail-content-header {
             padding: 40px 0 30px 0;
-            background: #e36a00;
+            background: #ececec;
         }
 
         #mail-content-body {
@@ -69,20 +69,25 @@
             padding: 5px;
         }
 
-        a {
-            background-color: #e6e6e6;
+        .button {
+            background-color: #E36A00;
             color: rgb(27, 27, 27);
             text-decoration: none;
             border-radius: 2px;
             padding: 3px;
         }
 
-        a:hover {
+        .button:hover {
             background-color: #f08b26;
         }
 
-        a:visited{
-            color: rgb(255, 255, 255);
+        .button:visited {
+            color: #ffffff;
+        }
+
+        strong {
+            text-decoration: none;
+            color: #ffffff;
         }
 
         #p-footer{
@@ -99,7 +104,7 @@
                 <table role="presentation" id="mail-content-container">
                     <tr>
                         <td align="center" id="mail-content-header">
-                            <img src="https://online.visual-paradigm.com/repository/images/91b5f167-b5a8-4c07-811a-8a830368f9ea/email-headers-design/national-tree-day-email-header.png"
+                            <img src="https://raw.githubusercontent.com/GarcelCode/jinja-template-mail/main/img/logo.png"
                                 alt="logoCP" width="300px">
                         </td>
                     </tr>
@@ -142,7 +147,7 @@
                                     </table>
                                 </section>
                                 {% if user.registered %}
-                                <a href={{ base_url + 'validations?period=2022-abril' }}>Más detalles</a>
+                                <a class="button" href={{ base_url + 'validations?period=2022-abril' }}><strong>Más detalles</strong></a>
                                 {% endif %}
                                 {% else %}
                                 <p>No hay CFDIs emitidos con errores</p>
@@ -181,7 +186,7 @@
                                     </table>
                                 </section>
                                 {% if user.registered %}
-                                <a href={{ base_url + 'validations?period=2022-abril' }}>Más detalles</a>
+                                <a class="button" href={{ base_url + 'validations?period=2022-abril' }}><strong>Más detalles</strong></a>
                                 {% endif %}
                                 {% else %}
                                 <p>No hay CFDIs recibidos con errores</p>
@@ -220,9 +225,8 @@
                                     </table>
                                 </section>
                                 {% if user.registered %}
-                                <a href={{ base_url
-                                    + 'cfdi-issued?type=ingress&period=2022-abril&state=inactive&cancelled=cmea' }}>Más
-                                    detalles</a>
+                                <a class="button" href={{ base_url
+                                    + 'cfdi-issued?type=ingress&period=2022-abril&state=inactive&cancelled=cmea' }}><strong>Más detalles</strong></a>
                                 {% endif %}
                                 {% else %}
                                 <p>No hay CFDIs cancelados con errores</p>
@@ -254,14 +258,14 @@
                                                 <td>{{cfdi.NombreEmisor}}</td>
                                                 <td>{{cfdi.FechaCertificacionSat}}</td>
                                                 <td>{{cfdi.Estatus}}</td>
-                                                <td>{{cfdi.Total}}</td>
+                                                <td>{{"${:,.2f}".format(cfdi.Total)}}</td>
                                             </tr>
                                             {% endfor %}
                                         </tbody>
                                     </table>
                                 </section>
                                 {% if user.registered %}
-                                <a href={{ base_url + 'efos?type=ingress&period=2022-abril' }}>Más detalles</a>
+                                <a class="button" href={{ base_url + 'efos?type=ingress&period=2022-abril' }}><strong>Más detalles</strong></a>
                                 {% endif %}
                                 {% else %}
                                 <p>No hay CFDIs con efos erróneos</p>
