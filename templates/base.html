@@ -31,7 +31,7 @@
 
         #mail-content-header {
             padding: 40px 0 30px 0;
-            background: #e36a00;
+            background: #ececec;
         }
 
         #mail-content-body {
@@ -66,20 +66,41 @@
             padding: 5px;
         }
 
-        a {
-            background-color: #e6e6e6;
+        .button{
+            background-color: #E36A00;
             color: rgb(27, 27, 27);
             text-decoration: none;
             border-radius: 2px;
             padding: 3px;
         }
 
-        a:hover {
+        .button:hover {
             background-color: #f08b26;
+        }
+
+        .button:visited{
+            color:#ffffff;
+        }
+
+        strong{
+            text-decoration: none;
+            color: #ffffff;
         }
 
         #p-footer{
             color: white;
+        }
+
+        #correo{
+            text-decoration: none;
+            color: black;
+        }
+
+        #mail-password-table{
+            margin-top: 10px;
+            background-color: #ececec;
+            padding: 10px;
+            border-radius: 10px;
         }
 
     </style>
@@ -91,13 +112,13 @@
                     <table role="presentation" id="mail-content-container">
                         <tr>
                             <td align="center" id="mail-content-header">
-                                <img src="https://online.visual-paradigm.com/repository/images/91b5f167-b5a8-4c07-811a-8a830368f9ea/email-headers-design/national-tree-day-email-header.png" alt="logoCP" width="300px">
+                                <img src="https://raw.githubusercontent.com/GarcelCode/jinja-template-mail/main/img/logo.png" alt="logoCP" width="300px" heght="300px">
                             </td>
                         </tr>
                         <tr>
                             <td id="mail-content-body">
                                 <div id="mail-content-message">
-                                <!--Content here-->
+                                {% block content %} {% endblock %}
                                 </div>
                             </td>
                         </tr>
