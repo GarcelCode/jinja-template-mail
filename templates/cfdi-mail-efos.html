@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CFDIS con errores</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .logo{
+            height: 128px;
+            width: 128px;
+        }
+
+        #mail-table-container {
+            width: 100%;
+            border-collapse: collapse;
+            border: 0;
+            border-spacing: 0;
+            background: #ffffff;
+        }
+
+        #mail-conntent-container {
+            width: 602px;
+            border-collapse: collapse;
+            border: 1px solid #cccccc;
+            border-spacing: 0;
+            text-align: left;
+        }
+
+        #mail-content-header {
+            padding: 40px 0 30px 0;
+            background: #e36a00;
+        }
+
+        #mail-content-body {
+            padding: 36px 30px 42px 30px;
+        }
+
+        #mail-content-footer {
+            padding: 30px;
+            background: #274E75;
+        }
+
+        section {
+            margin-bottom: 10px;
+        }
+
+        .cfdi-table {
+            border-collapse: collapse;
+        }
+
+        .cfdi-table-row {
+            border: solid 1px rgb(196, 196, 196);
+            padding: 5px;
+        }
+
+        .cfdi-table-row th {
+            border: solid 1px rgb(196, 196, 196);
+            padding: 5px;
+        }
+
+        .cfdi-table-row td {
+            border: solid 1px rgb(196, 196, 196);
+            padding: 5px;
+        }
+
+        a {
+            background-color: #e6e6e6;
+            color: rgb(27, 27, 27);
+            text-decoration: none;
+            border-radius: 2px;
+            padding: 3px;
+        }
+
+        a:hover {
+            background-color: #f08b26;
+        }
+
+        #p-footer{
+            color: white;
+        }
+
+    </style>
+</head>
+
+<body>
+    <table role="presentation" id="mail-table-container">
+        <tr>
+            <td align="center" style="padding:0">
+                <table role="presentation" id="mail-content-container">
+                    <tr>
+                        <td align="center" id="mail-content-header">
+                            <img class="logo" src="https://solucioncp-frontend-dev.s3.amazonaws.com/static/media/logo.aacf0475.svg" alt="logoCP">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="mail-content-body">
+                            <div id="mail-content-message">
+                                <p>Estimado(a): <b>{{user.name}}</b>, se encontraron los siguientes CFDIS con operaciones con EFOS en el sistema.</p>
+                                <h2>CFDIS con EFOS</h2>
+                                <section>
+                                    <table class="cfdi-table">
+                                        <thead>
+                                            <tr class="cfdi-table-row">
+                                                <th>Folio</th>
+                                                <th>Serie</th>
+                                                <th>UUID</th>
+                                                <th>Emisor</th>
+                                                <th>Fecha Timbrado</th>
+                                                <th>Estatus</th>
+                                                <th>Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for cfdi in cfdis_with_efos %}
+                                            <tr class="cfdi-table-row">
+                                                <td>{{cfdi.Folio or ""}}</td>
+                                                <td>{{cfdi.Serie or ""}}</td>
+                                                <td>{{cfdi.UUID}}</td>
+                                                <td>{{cfdi.NombreEmisor}}</td>
+                                                <td>{{cfdi.FechaCertificacionSat}}</td>
+                                                <td>{{cfdi.Estatus}}</td>
+                                                <td>{{cfdi.Total}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </section>
+                                {% if user.registered %}
+                                <a href={{ base_url + 'efos?type=ingress&period=2022-abril' }}>Más detalles</a>
+                                {% endif %}
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" id="mail-content-footer">
+                            <p id="p-footer">Has recibido este correo por ser usuario de los servicios de SoluciónCP</p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
