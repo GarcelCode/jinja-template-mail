@@ -1,19 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CFDIS con errores</title>
-
+    <!--[if mso]>
+    <noscript>
+        <xml>
+            <o:OfficeDocumentSettings>
+                <o:PixelsPerInch>96</o:PixelsPerInch>
+            </o:OfficeDocumentSettings>
+        </xml>
+    </noscript>
+    <![endif]-->
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
         body {
             margin: 0;
             padding: 0;
-            font-family: barlow;
         }
 
         #mail-table-container {
@@ -24,26 +29,29 @@
             background: #ffffff;
         }
 
-        #mail-conntent-container {
-            width: 602px;
+        #mail-content-container {
+            width: 950px;
             border-collapse: collapse;
-            border: 1px solid #cccccc;
+            border: 1px solid #dddddd;
             border-spacing: 0;
             text-align: left;
         }
 
         #mail-content-header {
             padding: 40px 0 30px 0;
-            background: #ececec;
+        }
+
+        #ez-title {
+            padding: 0 0 0 15px;
+            font-size: 35px;
         }
 
         #mail-content-body {
-            padding: 36px 30px 42px 30px;
+            padding: 0 30px 42px 30px;
         }
 
         #mail-content-footer {
             padding: 30px;
-            background: #274E75;
         }
 
         section {
@@ -71,10 +79,11 @@
 
         .button {
             background-color: #E36A00;
-            color: rgb(27, 27, 27);
             text-decoration: none;
-            border-radius: 2px;
-            padding: 3px;
+            border-radius: 10px;
+            padding: 5px;
+            font-size: 15px;
+            cursor: pointer;
         }
 
         .button:hover {
@@ -90,10 +99,17 @@
             color: #ffffff;
         }
 
-        #p-footer{
-            color: white;
+        #correo {
+            text-decoration: none;
+            color: black;
         }
 
+        #mail-password-table {
+            margin-top: 10px;
+            background-color: #ececec;
+            padding: 10px;
+            border-radius: 10px;
+        }
     </style>
 </head>
 
@@ -103,18 +119,30 @@
             <td align="center" style="padding:0">
                 <table role="presentation" id="mail-content-container">
                     <tr>
-                        <td align="center" id="mail-content-header">
-                            <img src="https://raw.githubusercontent.com/GarcelCode/jinja-template-mail/main/img/logo.png"
-                                alt="logoCP" width="300px">
+                        <td align="left" id="mail-content-header">
+                            <table>
+                                <tr>
+                                    <td><img src="https://raw.githubusercontent.com/GarcelCode/jinja-template-mail/main/img/ezAudita.jpg"
+                                            alt="logoCP" width="80px" heght="80px" style="border-radius: 10px; margin: 0 0 0 10px"></td>
+                                    <td id="ez-title">ezAudita</td>
+                                </tr>
+                            </table>
                         </td>
                     </tr>
                     <tr>
                         <td id="mail-content-body">
                             <div id="mail-content-message">
-                                <p>Querido <b>{{user.name}}</b> - <b>{{company.name}}</b> estos son los registros que
-                                    requieren su atención</p>
+                                <h1> Error en CFDI</h1>
+                                
+                                {% if user is defined %}
+                                <p><b>Hola, {{user.name}}!</b></p>
+                                {% endif %}
 
-                                <h2>CFDIS con error en el mes actual</h2>
+                                <p>Hemos identificado algunos errores en los siguientes CFDI's para <b>{{company.name}}</b>,
+                                    que no cumplen con todas las reglas establecidas por el SAT. Favor de tomar
+                                    las acciones necesarias para la corrección y con ello prevenir riesgos fiscales
+                                    y/o multas.</p>
+
                                 {% if cfdis_with_errors_issued is defined %}
                                 <h3>CFDIS Emitidos</h3>
                                 {% if cfdis_with_errors_issued %}
@@ -146,8 +174,8 @@
                                         </tbody>
                                     </table>
                                 </section>
-                                {% if user.registered %}
-                                <a class="button" href={{ base_url + 'validations?period=2022-abril' }}><strong>Más detalles</strong></a>
+                                {% if user %}
+                                <a class="button" href=""><strong>Corregir problemas</strong></a>
                                 {% endif %}
                                 {% else %}
                                 <p>No hay CFDIs emitidos con errores</p>
@@ -185,8 +213,8 @@
                                         </tbody>
                                     </table>
                                 </section>
-                                {% if user.registered %}
-                                <a class="button" href={{ base_url + 'validations?period=2022-abril' }}><strong>Más detalles</strong></a>
+                                {% if user %}
+                                <a class="button" href=""><strong>Corregir problemas</strong></a>
                                 {% endif %}
                                 {% else %}
                                 <p>No hay CFDIs recibidos con errores</p>
@@ -224,9 +252,8 @@
                                         </tbody>
                                     </table>
                                 </section>
-                                {% if user.registered %}
-                                <a class="button" href={{ base_url
-                                    + 'cfdi-issued?type=ingress&period=2022-abril&state=inactive&cancelled=cmea' }}><strong>Más detalles</strong></a>
+                                {% if user %}
+                                <a class="button" href=""><strong>Corregir problemas</strong></a>
                                 {% endif %}
                                 {% else %}
                                 <p>No hay CFDIs cancelados con errores</p>
@@ -264,22 +291,37 @@
                                         </tbody>
                                     </table>
                                 </section>
-                                {% if user.registered %}
-                                <a class="button" href={{ base_url + 'efos?type=ingress&period=2022-abril' }}><strong>Más detalles</strong></a>
+                                {% if user %}
+                                <a class="button" href=""><strong>Corregir problemas</strong></a>
                                 {% endif %}
                                 {% else %}
                                 <p>No hay CFDIs con efos erróneos</p>
                                 {% endif %}
                                 {% endif %}
 
-                                <p><i>*La información comprende desde el último correo emitido {{date}} al día en que se
+                                <p><i>*La información comprende desde el último correo emitido al día en que se
                                         recibe este correo.</i></p>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td align="center" id="mail-content-footer">
-                            <p id="p-footer">Has recibido este correo por ser usuario de los servicios de SoluciónCP</p>
+                            <table>
+                                <tr>
+                                    <td align="center">
+                                        <p>¡Estamos aquí para ayudar!</p>
+                                        <p>Si tienes alguna pregunta, ponte en contacto con nosotros a través de <a
+                                                id="correo">ezauditasupport@ezkorp.com</a></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left">
+                                        <a href="https://www.facebook.com/SolucioncpIdeas"><img
+                                                src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/facebook_circle_color-256.png"
+                                                alt="facebook-logo" width="40px" height="40px"></a>
+                                    </td>
+                                </tr>
+                            </table>
                         </td>
                     </tr>
                 </table>
