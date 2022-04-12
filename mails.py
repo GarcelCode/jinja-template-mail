@@ -15,13 +15,13 @@ from globals import g_to_email, g_from_email, g_password_email
 env = Environment(loader=FileSystemLoader('%s/templates/' % os.path.dirname(__file__)))
 
 def get_data():
-    data = data_pass
+    data = efirma_data
     return data
 
 def send_mail(bodyContent):
     to_email = g_to_email
     from_email = g_from_email
-    subject = '4 restablecer contraseña'
+    subject = 'CFDI Efirma'
     message = MIMEMultipart()
     message['Subject'] = subject
     message['From'] = from_email
@@ -38,7 +38,7 @@ def send_mail(bodyContent):
 
 def send_movie_list():
     json_data = get_data()
-    template = env.get_template('solcp-change-password.html')
+    template = env.get_template('solcp-efirma-template.html')
     bodyContent = template.render(json_data)
     send_mail(bodyContent)
     return "Mail sent successfully"
