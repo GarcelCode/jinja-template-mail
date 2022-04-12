@@ -142,6 +142,9 @@
                                     que no cumplen con todas las reglas establecidas por el SAT. Favor de tomar
                                     las acciones necesarias para la corrección y con ello prevenir riesgos fiscales
                                     y/o multas.</p>
+                                {% if cfdis_with_errors_issued or cfdis_with_errors_received %}
+                                <h2>CFDIs con error</h2>
+                                {% endif %}
 
                                 {% if cfdis_with_errors_issued is defined %}
                                 <h3>CFDIS Emitidos</h3>
@@ -175,7 +178,7 @@
                                     </table>
                                 </section>
                                 {% if user %}
-                                <a class="button" href=""><strong>Corregir problemas</strong></a>
+                                <a class="button" href={{ 'https://cpaudita.com/validations?cid=' + company.id }}><strong>Corregir problemas</strong></a>
                                 {% endif %}
                                 {% else %}
                                 <p>No hay CFDIs emitidos con errores</p>
@@ -214,16 +217,20 @@
                                     </table>
                                 </section>
                                 {% if user %}
-                                <a class="button" href=""><strong>Corregir problemas</strong></a>
+                                <a class="button" href={{ 'https://cpaudita.com/validations?cid=' + company.id }}><strong>Corregir problemas</strong></a>
                                 {% endif %}
                                 {% else %}
                                 <p>No hay CFDIs recibidos con errores</p>
                                 {% endif %}
                                 {% endif %}
 
-                                {% if cfdis_canceled is defined %}
-                                <h3>CFDIS Cancelados</h3>
-                                {% if cfdis_canceled %}
+                                {% if cfdis_issued_canceled or cfdis_received_canceled %}
+                                <h2>CFDIs cancelados</h2>
+                                {% endif %}
+
+                                {% if cfdis_issued_canceled is defined %}
+                                <h3>CFDIS Emitidos Cancelados</h3>
+                                {% if cfdis_issued_canceled %}
                                 <section>
                                     <table class="cfdi-table">
                                         <thead>
@@ -238,7 +245,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {% for cfdi in cfdis_canceled %}
+                                            {% for cfdi in cfdis_issued_canceled %}
                                             <tr class="cfdi-table-row">
                                                 <td>{{cfdi.Folio or ""}}</td>
                                                 <td>{{cfdi.Serie or ""}}</td>
@@ -253,10 +260,49 @@
                                     </table>
                                 </section>
                                 {% if user %}
-                                <a class="button" href=""><strong>Corregir problemas</strong></a>
+                                <a class="button" href={{ "https://cpaudita.com/cfdi-issued?cid=" + company.id + "&type=ingress&state=inactive&cancelled=cmea" }}><strong>Corregir problemas</strong></a>
                                 {% endif %}
                                 {% else %}
-                                <p>No hay CFDIs cancelados con errores</p>
+                                <p>No hay CFDIs emitidos cancelados</p>
+                                {% endif %}
+                                {% endif %}
+
+                                {% if cfdis_received_canceled is defined %}
+                                <h3>CFDIS Recibidos Cancelados</h3>
+                                {% if cfdis_received_canceled %}
+                                <section>
+                                    <table class="cfdi-table">
+                                        <thead>
+                                            <tr class="cfdi-table-row">
+                                                <th>Folio</th>
+                                                <th>Serie</th>
+                                                <th>UUID</th>
+                                                <th>Emisor</th>
+                                                <th>Receptor</th>
+                                                <th>Fecha Timbrado</th>
+                                                <th>Fecha Cancelación</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for cfdi in cfdis_received_canceled %}
+                                            <tr class="cfdi-table-row">
+                                                <td>{{cfdi.Folio or ""}}</td>
+                                                <td>{{cfdi.Serie or ""}}</td>
+                                                <td>{{cfdi.UUID}}</td>
+                                                <td>{{cfdi.NombreEmisor}}</td>
+                                                <td>{{cfdi.NombreReceptor}}</td>
+                                                <td>{{cfdi.FechaCertificacionSat}}</td>
+                                                <td>{{cfdi.FechaCancelacion}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </section>
+                                {% if user %}
+                                <a class="button" href={{ "https://cpaudita.com/cfdi-received?cid=" + company.id + "&type=ingress&period=2022-abril&state=inactive&cancelled=cmea" }}><strong>Corregir problemas</strong></a>
+                                {% endif %}
+                                {% else %}
+                                <p>No hay CFDIs recibidos cancelados</p>
                                 {% endif %}
                                 {% endif %}
 
@@ -292,7 +338,7 @@
                                     </table>
                                 </section>
                                 {% if user %}
-                                <a class="button" href=""><strong>Corregir problemas</strong></a>
+                                <a class="button" href={{ "https://cpaudita.com/efos?cid=" + company.id + "&type=ingress&state=active" }}><strong>Corregir problemas</strong></a>
                                 {% endif %}
                                 {% else %}
                                 <p>No hay CFDIs con efos erróneos</p>
@@ -311,7 +357,7 @@
                                     <td align="center">
                                         <p>¡Estamos aquí para ayudar!</p>
                                         <p>Si tienes alguna pregunta, ponte en contacto con nosotros a través de <a
-                                                id="correo">ezauditasupport@ezkorp.com</a></p>
+                                                id="correo">soporte@solucioncp.com</a></p>
                                     </td>
                                 </tr>
                                 <tr>
