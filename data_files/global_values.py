@@ -9,7 +9,7 @@ company = {
     'name':'EZKORP',
 }
 
-url = 'http://localhost:3000/'
+appUrl = 'https://cpaudita.com'
 
 cfdi_issued =[{
         'Folio':'6217',
