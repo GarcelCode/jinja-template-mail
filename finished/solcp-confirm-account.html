@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CFDIS con errores</title>
+    <!--[if mso]>
+    <noscript>
+        <xml>
+            <o:OfficeDocumentSettings>
+                <o:PixelsPerInch>96</o:PixelsPerInch>
+            </o:OfficeDocumentSettings>
+        </xml>
+    </noscript>
+    <![endif]-->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #mail-table-container {
+            width: 100%;
+            border-collapse: collapse;
+            border: 0;
+            border-spacing: 0;
+            background: #ffffff;
+        }
+
+        #mail-content-container {
+            width: 602px;
+            border-collapse: collapse;
+            border: 1px solid #dddddd;
+            border-spacing: 0;
+            text-align: left;
+        }
+
+        #mail-content-header {
+            padding: 40px 0 30px 0;
+        }
+
+        #ez-title {
+            padding: 0 0 0 15px;
+            font-size: 35px;
+        }
+
+        #mail-content-body {
+            padding: 0 30px 30px 30px;
+        }
+
+        #mail-content-footer {
+            padding: 30px;
+        }
+
+        section {
+            margin-bottom: 10px;
+        }
+
+        .button {
+            background-color: #E36A00;
+            text-decoration: none;
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #f08b26;
+        }
+
+        .button:visited {
+            color: #ffffff;
+        }
+
+        strong {
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        #correo {
+            text-decoration: none;
+            color: black;
+        }
+
+        #mail-password-table {
+            margin-top: 10px;
+            background-color: #ececec;
+            padding: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <table role="presentation" id="mail-table-container">
+        <tr>
+            <td align="center" style="padding:0">
+                <table role="presentation" id="mail-content-container">
+                    <tr>
+                        <td align="left" id="mail-content-header">
+                            <table>
+                                <tr>
+                                    <td><img src="https://raw.githubusercontent.com/GarcelCode/jinja-template-mail/main/img/ezAudita.jpg"
+                                            alt="logoCP" width="80px" heght="80px" style="border-radius: 10px; margin: 0 0 0 10px"></td>
+                                    <td id="ez-title">ezAudita</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="mail-content-body">
+                            <div id="mail-content-message">
+                                <p><b>Hola, {{user.name}}!</b></p>
+                                <p><b>Estamos muy contentos que llegues a este punto!</b></p>
+
+                                <p>Gracias por tomar este periodo de prueba. Te has unido a la comunidad en donde
+                                    contadores, despachos y empresas a nivel nacional, de la mano de <b style="color:#E36A00">ezAudita</b> llevan
+                                    el control de sus procesos tributarios. Pero 15 días se pasan muy rápido! Mientras
+                                    tanto, te mostraremos como aprovechar <b style="color:#E36A00">ezAudita</b> al máximo.
+                                </p>
+                                <p>Para activar tu cuenta ezAudita, haz click en el botón de abajo <b>antes de <b style="color:red">{{numeroDias}}</b> días</b></p>
+                                <table align="center">
+                                    <tr align="center" style="height: 50px">
+                                        <td><a class="button" href="https://cpaudita.com/login"
+                                                style="padding: 5px 40px 5px 40px;"><strong>Confirmar cuenta</strong></a></td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" id="mail-content-footer">
+                            <p>Si tienes alguna pregunta en relación a tu cuenta ezAudita, ponte en contacto con nosotros a
+                                través de <a id="correo">ezauditasupport@ezkorp.com</a>. Nuestro equipo de asistencia te ayudara con
+                                cualquier cosa que necesites. </p>
+
+                            <b>Disfruta y bienvenido(a) a ezAudita.</b>
+                            <p>Saludos, <br> El equipo de <a href="https://solucioncp.com/" style="color:black">ezAudita</a></p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
