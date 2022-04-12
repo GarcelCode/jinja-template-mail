@@ -1,6 +1,7 @@
-from data_files.global_values import company
+from data_files.global_values import company, user
 
 efirma_data = {
+    'user': user,
     'company':company,
-    'dias':9,
+    'numeroDias':9,
 }
