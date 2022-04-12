@@ -6,6 +6,7 @@ user = {
 }
 
 company = {
+    'id': "299",
     'name':'EZKORP',
 }
 
@@ -191,7 +192,89 @@ cfdi_received = [{
         'errors_string':'Ingreso con Método de pago PUE y Forma de pago igual a 99',
 }]
 
-cfdi_canceled = [{
+cfdi_issued_canceled = [{
+        'Folio':'4317',
+        'Serie':'GDLS',
+        'UUID':'fb54f3de-952d-47b6-b05c-8f2098203f2a',
+        'NombreEmisor':'Gordie Kal-El',
+        'NombreReceptor':'Rolf Damon',
+        'FechaCertificacionSat':'2021-08-22 10:59:35',
+        'FechaCancelacion':'2017-08-27 03:18:14',
+    },{
+        'Folio':'3324',
+        'Serie':'DVGDL',
+        'UUID':'6cfb7abc-2d49-4921-821c-fc9a4e257539',
+        'NombreEmisor':'Gordon Leah',
+        'NombreReceptor':'Trisha Mary Jane',
+        'FechaCertificacionSat':'2021-08-24 05:02:30',
+        'FechaCancelacion':'2021-06-11 05:47:19',
+    },{
+        'Folio':'4355',
+        'Serie':'GDLS',
+        'UUID':'e35da758-ed50-4736-8438-75e6cce43869',
+        'NombreEmisor':'Sydney Antony',
+        'NombreReceptor':'Logan Alexina',
+        'FechaCertificacionSat':'2021-02-22 03:53:31',
+        'FechaCancelacion':'2018-06-11 03:01:39',
+    },{
+        'Folio':'5425',
+        'Serie':'DNDi',
+        'UUID':'9f555cf2-0235-4683-ac03-a3889055d60f',
+        'NombreEmisor':'Tony Kourtney',
+        'NombreReceptor':'Calla Ormonde',
+        'FechaCertificacionSat':'2017-04-04 23:03:38',
+        'FechaCancelacion':'2019-03-12 23:26:48',
+    },{
+        'Folio':'676',
+        'Serie':'DFS',
+        'UUID':'94141d04-4e50-4e68-80cd-06bfe10113b2',
+        'NombreEmisor':'Cissy Tommy',
+        'NombreReceptor':'Maude Kason',
+        'FechaCertificacionSat':'2018-06-30 15:10:18',
+        'FechaCancelacion':'2017-07-24 17:03:25',
+    },{
+        'Folio':'3444',
+        'Serie':'DNDi',
+        'UUID':'a9037cdc-46d3-431f-85ae-a3fff4a0be73',
+        'NombreEmisor':'Aileen Deirdre',
+        'NombreReceptor':'Lew Andy',
+        'FechaCertificacionSat':'2019-09-27 16:02:54',
+        'FechaCancelacion':'2021-08-06 22:06:06',
+    },{
+        'Folio':'',
+        'Serie':'',
+        'UUID':'110b0d37-3be8-4c4c-b57b-88fd1cf4afc5',
+        'NombreEmisor':'Donnie Jep',
+        'NombreReceptor':'Posy Dayton',
+        'FechaCertificacionSat':'2019-05-06 11:02:45',
+        'FechaCancelacion':'2019-06-22 23:11:22',
+    },{
+        'Folio':'',
+        'Serie':'',
+        'UUID':'91ea79b8-33b6-4d8b-bba3-6e11c05a4966',
+        'NombreEmisor':'Dave Lyndsea',
+        'NombreReceptor':'Andi Jarrett',
+        'FechaCertificacionSat':'2018-11-07 07:08:58',
+        'FechaCancelacion':'2018-01-14 18:02:53',
+    },{
+        'Folio':'1872',
+        'Serie':'DLS',
+        'UUID':'77568497-fe57-42ec-920a-5ece052df047',
+        'NombreEmisor':'Fitzroy Allie',
+        'NombreReceptor':'Tessa Matthew',
+        'FechaCertificacionSat':'2018-10-23 14:07:02',
+        'FechaCancelacion':'2020-01-11 01:27:11',
+    },{
+        'Folio':'1816',
+        'Serie':'DVGL',
+        'UUID':'0121e84e-d1c7-4925-8416-778625abc579',
+        'NombreEmisor':'Maddy Makenna',
+        'NombreReceptor':'Shaelyn Carolina',
+        'FechaCertificacionSat':'2019-09-09 17:52:06',
+        'FechaCancelacion':'2020-04-22 23:23:12',
+}]
+
+cfdi_received_canceled = [{
         'Folio':'4317',
         'Serie':'GDLS',
         'UUID':'fb54f3de-952d-47b6-b05c-8f2098203f2a',
