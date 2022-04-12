@@ -5,7 +5,7 @@ from email.mime.multipart import MIMEMultipart
 from jinja2 import Environment, FileSystemLoader
 import os
 
-from data_files.data_errormail import data_file_filled, data_file_partial, data_file_empty
+from data_files.data_errormail import data_file_filled, data_file_partial, data_file_empty, data_without_user
 from data_files.data_efosmail import efos_data_file_filled
 from data_files.data_confirmmail import confirm_data
 from data_files.data_temporarypass import data_pass
@@ -21,7 +21,7 @@ def get_data():
 def send_mail(bodyContent):
     to_email = g_to_email
     from_email = g_from_email
-    subject = 'Contraseña temporal'
+    subject = '4 restablecer contraseña'
     message = MIMEMultipart()
     message['Subject'] = subject
     message['From'] = from_email
@@ -38,7 +38,7 @@ def send_mail(bodyContent):
 
 def send_movie_list():
     json_data = get_data()
-    template = env.get_template('solcp-temporary-password.html')
+    template = env.get_template('solcp-change-password.html')
     bodyContent = template.render(json_data)
     send_mail(bodyContent)
     return "Mail sent successfully"

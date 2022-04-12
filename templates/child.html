@@ -1,4 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
-
+<table align="center">
+    <tr align="center">
+        <td><h1>Confirmación de la cuenta</h1></td>
+    </tr>
+    <tr align="center">
+        <td>Confirma tu dirección de correo electrónico <a id="correo">{{ user.email }}</a></td>
+    </tr>
+    <tr align="center" style="height: 50px">
+        <td><a class="button" href="https://cpaudita.com/login" style="padding: 5px 40px 5px 40px;"><strong>Verificar</strong></a></td>
+    </tr>
+</table>
 {% endblock %}

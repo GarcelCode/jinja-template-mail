@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CFDIS con errores</title>
-
+    <!--[if mso]>
+    <noscript>
+        <xml>
+            <o:OfficeDocumentSettings>
+                <o:PixelsPerInch>96</o:PixelsPerInch>
+            </o:OfficeDocumentSettings>
+        </xml>
+    </noscript>
+    <![endif]-->
     <style>
 
         body{
@@ -31,16 +39,19 @@
 
         #mail-content-header {
             padding: 40px 0 30px 0;
-            background: #ececec;
+        }
+
+        #ez-title{
+            padding: 0 0 0 15px;
+            font-size: 35px;
         }
 
         #mail-content-body {
-            padding: 36px 30px 42px 30px;
+            padding: 0 30px 42px 30px;
         }
 
         #mail-content-footer {
             padding: 30px;
-            background: #274E75;
         }
 
         section {
@@ -68,10 +79,11 @@
 
         .button{
             background-color: #E36A00;
-            color: rgb(27, 27, 27);
             text-decoration: none;
-            border-radius: 2px;
-            padding: 3px;
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 15px;
+            cursor: pointer;
         }
 
         .button:hover {
@@ -85,10 +97,6 @@
         strong{
             text-decoration: none;
             color: #ffffff;
-        }
-
-        #p-footer{
-            color: white;
         }
 
         #correo{
@@ -111,8 +119,13 @@
                 <td align="center" style="padding:0">
                     <table role="presentation" id="mail-content-container">
                         <tr>
-                            <td align="center" id="mail-content-header">
-                                <img src="https://raw.githubusercontent.com/GarcelCode/jinja-template-mail/main/img/logo.png" alt="logoCP" width="300px" heght="300px">
+                            <td align="left" id="mail-content-header">
+                                <table>
+                                    <tr>
+                                        <td><img src="https://raw.githubusercontent.com/GarcelCode/jinja-template-mail/main/img/ezAudita.jpg" alt="logoCP" width="80px" heght="80px" style="border-radius: 10px;"></td>
+                                        <td id="ez-title">ezAudita</td>
+                                    </tr>
+                                </table>
                             </td>
                         </tr>
                         <tr>
@@ -124,7 +137,19 @@
                         </tr>
                         <tr>
                             <td align="center" id="mail-content-footer">
-                                <p id="p-footer">Has recibido este correo por ser usuario de los servicios de SoluciónCP</p>
+                                <table>
+                                    <tr>
+                                        <td align="center">
+                                            <p>¡Estamos aquí para ayudar!</p>
+                                            <p>Si tienes alguna pregunta, ponte en contacto con nosotros a través de <a id="correo">ezauditasupport@ezkorp.com</a></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left">
+                                            <a href="https://www.facebook.com/SolucioncpIdeas" ><img src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/facebook_circle_color-256.png" alt="facebook-logo" width="40px" height="40px"></a>
+                                        </td>
+                                    </tr>
+                                </table>
                             </td>
                         </tr>
                     </table>
