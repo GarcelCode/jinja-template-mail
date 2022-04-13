@@ -21,87 +21,8 @@
             padding: 0;
         }
 
-        #mail-table-container {
-            width: 100%;
-            border-collapse: collapse;
-            border: 0;
-            border-spacing: 0;
-            background: #ffffff;
-        }
-
-        #mail-content-container {
-            width: 602px;
-            border-collapse: collapse;
-            border: 1px solid #dddddd;
-            border-spacing: 0;
-            text-align: left;
-        }
-
-        #mail-content-header {
-            padding: 40px 0 30px 0;
-        }
-
-        #ez-title {
-            padding: 0 0 0 15px;
-            font-size: 35px;
-        }
-
-        #mail-content-body {
-            padding: 0 30px 42px 30px;
-        }
-
-        #mail-content-footer {
-            padding: 30px;
-        }
-
-        section {
-            margin-bottom: 10px;
-        }
-
-        .cfdi-table {
-            border-collapse: collapse;
-        }
-
-        .cfdi-table-row {
-            border: solid 1px rgb(196, 196, 196);
-            padding: 5px;
-        }
-
-        .cfdi-table-row th {
-            border: solid 1px rgb(196, 196, 196);
-            padding: 5px;
-        }
-
-        .cfdi-table-row td {
-            border: solid 1px rgb(196, 196, 196);
-            padding: 5px;
-        }
-
-        .button {
-            background-color: #E36A00;
-            text-decoration: none;
-            border-radius: 10px;
-            padding: 10px;
-            font-size: 15px;
-            cursor: pointer;
-        }
-
         .button:hover {
             background-color: #f08b26;
-        }
-
-        .button:visited {
-            color: #ffffff;
-        }
-
-        strong {
-            text-decoration: none;
-            color: #ffffff;
-        }
-
-        #correo {
-            text-decoration: none;
-            color: black;
         }
 
         #mail-password-table {
@@ -114,61 +35,70 @@
 </head>
 
 <body>
-    <table role="presentation" id="mail-table-container">
+    <table role="presentation"
+        style="width: 100%;border-collapse: collapse;border: 0;border-spacing: 0;background: #ffffff;">
         <tr>
             <td align="center" style="padding:0">
-                <table role="presentation" id="mail-content-container">
+                <table role="presentation"
+                    style="width: 602px;border-collapse: collapse;border: 1px solid #dddddd;border-spacing: 0;text-align: left;">
                     <tr>
-                        <td align="left" id="mail-content-header">
+                        <td id="header" align="left" style="padding: 40px 0 30px 0;">
                             <table>
                                 <tr>
                                     <td><img src="https://raw.githubusercontent.com/GarcelCode/jinja-template-mail/main/img/ezAudita.jpg"
-                                            alt="logoCP" width="80px" heght="80px" style="border-radius: 10px; margin: 0 0 0 10px"></td>
-                                    <td id="ez-title">ezAudita</td>
+                                            alt="logoCP" width="80px" heght="80px"
+                                            style="border-radius: 10px; margin: 0 0 0 10px"></td>
+                                    <td style="padding: 0 0 0 15px;font-size: 35px;">ezAudita</td>
                                 </tr>
                             </table>
                         </td>
                     </tr>
                     <tr>
-                        <td id="mail-content-body">
+                        <td id="body" style="padding: 0 30px 0 30px;">
                             <div id="mail-content-message">
-                                <h1>Error en e.firma</h1>
-                                <p><b>Hola, {{user.name}}!</b></p>
-                                <p>Para <b style="color:#E36A00">ezAudita</b> es muy importante poder brindarte la información de tus
-                                    cuentas.</p>
-                                <p>Inicia sesión en la cuenta y actualiza tú e.firma., ya que si la e.firma llegara a
-                                    vencer, no podremos realizar las descargas de CFDIs con el SAT, por lo cual, la
-                                    información presentada en los módulos de ezAudita no serán precisos.
+                                <h1>e.firma próxima a vencer</h1>
+                                <p><b>Hola {{user.name}},</b> tu e.firma está próxima a vencer.
+                                    <!--la fecha de vencimiento es,--> Si tu e.firma
+                                    llega a vencer no podremos seguir descargando los CFDIs de tu empresa y por
+                                    tanto la información que verías en ezAudita no estaría actualizada. Te sugerimos
+                                    actualizarla a la brevedad.
                                 </p>
-
-                               <!--<p> Contamos con <b>{{numeroDias}}</b> días para la actualización de la e.firma, y seguir
-                                    presentando la información correcta en cada uno de los módulos de
-                                    <b style="color:#E36A00">ezAudita</b>.
-                                </p>-->
+                                <br>
                                 <table style="width: 100%">
                                     <tr align="center">
                                         <td><a class="button" href="https://cpaudita.com/settings?tab=sat_sync"
-                                            style="padding: 5px 40px 5px 40px;"><strong>Actualizar e.firma</strong></a></td>
+                                                style="padding: 5px 40px 5px 40px;background-color: #E36A00;text-decoration: none;border-radius: 10px;padding: 10px;font-size: 15px;cursor: pointer;"><strong
+                                                    style="text-decoration: none;color: #ffffff;">Actualizar
+                                                    e.firma</strong></a></td>
                                     </tr>
                                 </table>
                             </div>
                         </td>
                     </tr>
                     <tr>
-                        <td align="center" id="mail-content-footer">
+                        <td id="footer" align="center" style="padding: 30px;">
                             <table>
                                 <tr>
                                     <td align="center">
                                         <p>¡Estamos aquí para ayudar!</p>
                                         <p>Si tienes alguna pregunta, ponte en contacto con nosotros a través de <a
-                                                id="correo">soporte@solucioncp.com</a></p>
+                                                style="text-decoration: none;color: black;">soporte@ezaudita.com</a>
+                                        </p>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td align="left">
-                                        <a href="https://www.facebook.com/SolucioncpIdeas"><img
-                                                src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/facebook_circle_color-256.png"
-                                                alt="facebook-logo" width="40px" height="40px"></a>
+                                    <td align="center">
+                                        <table style="border-spacing: 10px;">
+                                            <tr>
+                                                <td><a href="https://cpaudita.com" style="color:#274e75; font-weight: 600;">cpaudita.com</a></td>
+                                                <td><a href="https://www.facebook.com/SolucioncpIdeas"
+                                                        style="display: flex;justify-content: center; color:#274e75; font-weight: 600;"><!--<img
+                                                            src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/facebook_circle_color-256.png"
+                                                            alt="facebook-logo" width="40px" height="40px">-->
+                                                        <p>facebook/SoluciónCP</p>
+                                                    </a></td>
+                                            </tr>
+                                        </table>
                                     </td>
                                 </tr>
                             </table>

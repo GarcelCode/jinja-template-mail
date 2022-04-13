@@ -47,7 +47,7 @@
         }
 
         #mail-content-body {
-            padding: 0 30px 42px 30px;
+            padding: 0 30px 0 30px;
         }
 
         #mail-content-footer {
@@ -56,25 +56,6 @@
 
         section {
             margin-bottom: 10px;
-        }
-
-        .cfdi-table {
-            border-collapse: collapse;
-        }
-
-        .cfdi-table-row {
-            border: solid 1px rgb(196, 196, 196);
-            padding: 5px;
-        }
-
-        .cfdi-table-row th {
-            border: solid 1px rgb(196, 196, 196);
-            padding: 5px;
-        }
-
-        .cfdi-table-row td {
-            border: solid 1px rgb(196, 196, 196);
-            padding: 5px;
         }
 
         .button {
@@ -124,8 +105,8 @@
                                 <tr>
                                     <td><img src="https://raw.githubusercontent.com/GarcelCode/jinja-template-mail/main/img/ezAudita.jpg"
                                             alt="logoCP" width="80px" heght="80px"
-                                            style="border-radius: 10px; margin: 0 0 0 10px""></td>
-                                        <td id="ez-title">ezAudita</td>
+                                            style="border-radius: 10px; margin: 0 0 0 10px"></td>
+                                    <td id="ez-title">ezAudita</td>
                                 </tr>
                             </table>
                         </td>
@@ -133,53 +114,47 @@
                     <tr>
                         <td id="mail-content-body">
                             <div id="mail-content-message">
-                                <b>Hola {{ user.name }},</b>
-                                <p>A continuación te enviamos tus <b>credenciales temporales</b> para acceder a <b style="color:#E36A00">ezAudita</b>. Es muy fácil sólo sigue los
-                                    siguientes pasos: </p>
+                                <b>Muchas gracias por unirte a ezAudita</b>
 
-                                <p>1. Haz clic en el botón de abajo.</p>
-                                <div style="padding: 15px 50px 15px 15px">
-                                    <a class="button" href="https://cpaudita.com/login"
-                                        style="padding: 5px 40px 5px 40px;"><strong>Acceder</strong></a>
-                                </div>
-                                <p>2. Introduce tus credenciales temporales:</p>
-                                <b style="margin:0 0 0 15px">Usuario</b>: <a id="correo">{{ user.email }}</a><br>
-                                <b style="margin:0 0 0 15px">Contraseña</b>: {{ user.password }}<br>
-                                <p>3. Por favor, restablece tu contraseña. (NOTA: si olvidas tu contraseña,
-                                    ezAudita ofrece una opción de restablecimiento de contraseña).</p>
+                                <p>Hola {{user.name}},</p>
 
-                                <p><b style="color:#E36A00">TIP:</b> Agrega este sitio a tus favoritos para que
-                                    puedas volver fácilmente en cualquier momento.</p>
+                                <p>Muchas gracias por confiar en nosotros al adquirir tu suscripción a ezAudita. Nuestro
+                                    trabajo está enfocado en brindarte a ti y a tu equipo de trabajo, la certeza y
+                                    tranquilidad tributaria que necesitan para enfocarse en su negocio.
+    
+                                    Hemos puesto todo nuestro talento en acercarte la mejor tecnología y nos sentimos muy
+                                    orgullosos de lo que hemos logrado, una aplicación inteligente, intuitiva y fácil de
+                                    utilizar.</p>
+
+                                <p>De cualquier manera te invito a que visites nuestra página web y accedas a los
+                                    contenidos que hemos preparado para que aproveches al máximo tu suscripción. En caso de
+                                    duda, entra en contacto con nosotros a través del correo soporte@ezaudita.com.</p>
+
+                                <p>Espero que disfrutes la experiencia de utilizar ezAudita.</p>
+
+                                <p>Atentamente,<br>Hans Schmal<br>Director General ezAudita</p>
+
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td align="center" id="mail-content-footer">
-                            <table>
+                            <!--<table>
                                 <tr>
                                     <td align="center">
                                         <p>¡Estamos aquí para ayudar!</p>
                                         <p>Si tienes alguna pregunta, ponte en contacto con nosotros a través de <a
-                                                style="text-decoration: none;color: black;">soporte@ezaudita.com</a>
-                                        </p>
+                                                id="correo">ezauditasupport@ezkorp.com</a></p>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td align="center">
-                                        <table style="border-spacing: 10px;">
-                                            <tr>
-                                                <td><a href="https://cpaudita.com" style="color:#274e75; font-weight: 600;">cpaudita.com</a></td>
-                                                <td><a href="https://www.facebook.com/SolucioncpIdeas"
-                                                        style="display: flex;justify-content: center; color:#274e75; font-weight: 600;"><!--<img
-                                                            src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/facebook_circle_color-256.png"
-                                                            alt="facebook-logo" width="40px" height="40px">-->
-                                                        <p>facebook/SoluciónCP</p>
-                                                    </a></td>
-                                            </tr>
-                                        </table>
+                                    <td align="left">
+                                        <a href="https://www.facebook.com/SolucioncpIdeas"><img
+                                                src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/facebook_circle_color-256.png"
+                                                alt="facebook-logo" width="40px" height="40px"></a>
                                     </td>
                                 </tr>
-                            </table>
+                            </table>-->
                         </td>
                     </tr>
                 </table>

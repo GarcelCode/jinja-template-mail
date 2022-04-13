@@ -47,7 +47,7 @@
         }
 
         #mail-content-body {
-            padding: 0 30px 42px 30px;
+            padding: 0 30px 0 30px;
         }
 
         #mail-content-footer {
@@ -60,6 +60,7 @@
 
         .cfdi-table {
             border-collapse: collapse;
+            width: 100%;
         }
 
         .cfdi-table-row {
@@ -78,16 +79,14 @@
         }
 
         .button {
-            background-color: #E36A00;
-            text-decoration: none;
-            border-radius: 10px;
-            padding: 5px;
-            font-size: 15px;
+            color: #E36A00;
+            text-decoration-color: #ffffff;
             cursor: pointer;
+            margin: 0 0 0 15px;
         }
 
         .button:hover {
-            background-color: #f08b26;
+            text-decoration-color: #f58d32;
         }
 
         .button:visited {
@@ -96,7 +95,11 @@
 
         strong {
             text-decoration: none;
-            color: #ffffff;
+            color: #E36A00;
+        }
+
+        strong:hover{
+            color: #f58d32;
         }
 
         #correo {
@@ -123,7 +126,8 @@
                             <table>
                                 <tr>
                                     <td><img src="https://raw.githubusercontent.com/GarcelCode/jinja-template-mail/main/img/ezAudita.jpg"
-                                            alt="logoCP" width="80px" heght="80px" style="border-radius: 10px; margin: 0 0 0 10px"></td>
+                                            alt="logoCP" width="80px" heght="80px"
+                                            style="border-radius: 10px; margin: 0 0 0 10px"></td>
                                     <td id="ez-title">ezAudita</td>
                                 </tr>
                             </table>
@@ -132,84 +136,76 @@
                     <tr>
                         <td id="mail-content-body">
                             <div id="mail-content-message">
-                                <h1> Error en CFDI</h1>
-                                
+
                                 {% if user is defined %}
-                                <p><b>Hola, {{user.name}}!</b></p>
+                                <p><b>Hola {{user.name}},</b></p>
                                 {% endif %}
 
-                                <p>Hemos identificado algunos errores en los siguientes CFDI's para <b>{{company.name}}</b>,
-                                    que no cumplen con todas las reglas establecidas por el SAT. Favor de tomar
-                                    las acciones necesarias para la corrección y con ello prevenir riesgos fiscales
-                                    y/o multas.</p>
-                                {% if cfdis_with_errors_issued or cfdis_with_errors_received %}
-                                <h2>CFDIs con error</h2>
-                                {% endif %}
+                                <p>A continuación te enviamos las notificaciones identificadas por ezAudita y
+                                    configuradas para ti.</p>
 
                                 {% if cfdis_with_errors_issued is defined %}
-                                <h3>CFDIS Emitidos</h3>
+                                <h1>CFDIS Emitidos con error</h1>
                                 {% if cfdis_with_errors_issued %}
                                 <section>
                                     <table class="cfdi-table">
                                         <thead>
                                             <tr class="cfdi-table-row">
+                                                <th>Fecha Emisión</th>
                                                 <th>Folio</th>
                                                 <th>Serie</th>
                                                 <th>UUID</th>
-                                                <th>Emisor</th>
                                                 <th>Receptor</th>
-                                                <th>Fecha Timbrado</th>
                                                 <th>Error CFDI</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {% for cfdi in cfdis_with_errors_issued %}
                                             <tr class="cfdi-table-row">
+                                                <td>{{cfdi.FechaCertificacionSat}}</td>
                                                 <td>{{cfdi.Folio or ""}}</td>
                                                 <td>{{cfdi.Serie or ""}}</td>
                                                 <td>{{cfdi.UUID}}</td>
-                                                <td>{{cfdi.NombreEmisor}}</td>
                                                 <td>{{cfdi.NombreReceptor}}</td>
-                                                <td>{{cfdi.FechaCertificacionSat}}</td>
                                                 <td>{{cfdi.errors_string}}</td>
                                             </tr>
                                             {% endfor %}
                                         </tbody>
                                     </table>
                                 </section>
-                                {% if user %}
-                                <a class="button" href={{ 'https://cpaudita.com/validations?cid=' + company.id }}><strong>Corregir problemas</strong></a>
+                                {% if user and not cfdis_with_errors_received %}
+                                <a class="button" href={{ 'https://cpaudita.com/validations?cid=' + company.id
+                                    + "&period=" + date.year + "-" + date.month }}><strong>Ver más detalles</strong></a>
+                                    <br><br><br>
                                 {% endif %}
                                 {% else %}
-                                <p>No hay CFDIs emitidos con errores</p>
+                                <p>No hay CFDIs emitidos con errores</p> <br><br><br>
                                 {% endif %}
                                 {% endif %}
 
                                 {% if cfdis_with_errors_received is defined %}
-                                <h3>CFDIS Recibidos</h3>
+                                <h1>CFDIS Recibidos con error</h1>
                                 {% if cfdis_with_errors_received %}
                                 <section>
                                     <table class="cfdi-table">
                                         <thead>
                                             <tr class="cfdi-table-row">
+                                                <th>Fecha Emisión</th>
                                                 <th>Folio</th>
                                                 <th>Serie</th>
                                                 <th>UUID</th>
                                                 <th>Emisor</th>
-                                                <th>Receptor</th>
-                                                <th>Fecha Timbrado</th>
                                                 <th>Error CFDI</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {% for cfdi in cfdis_with_errors_received %}
                                             <tr class="cfdi-table-row">
+                                                <td>{{cfdi.FechaCertificacionSat}}</td>
                                                 <td>{{cfdi.Folio or ""}}</td>
                                                 <td>{{cfdi.Serie or ""}}</td>
                                                 <td>{{cfdi.UUID}}</td>
                                                 <td>{{cfdi.NombreEmisor}}</td>
-                                                <td>{{cfdi.NombreReceptor}}</td>
-                                                <td>{{cfdi.FechaCertificacionSat}}</td>
                                                 <td>{{cfdi.errors_string}}</td>
                                             </tr>
                                             {% endfor %}
@@ -217,42 +213,38 @@
                                     </table>
                                 </section>
                                 {% if user %}
-                                <a class="button" href={{ 'https://cpaudita.com/validations?cid=' + company.id }}><strong>Corregir problemas</strong></a>
+                                <a class="button" href={{ 'https://cpaudita.com/validations?cid=' + company.id
+                                    + "&period=" + date.year + "-" + date.month }}><strong>Ver más detalles</strong></a>
+                                    <br><br><br>
                                 {% endif %}
                                 {% else %}
-                                <p>No hay CFDIs recibidos con errores</p>
+                                <p>No hay CFDIs recibidos con errores</p> <br><br><br>
                                 {% endif %}
-                                {% endif %}
-
-                                {% if cfdis_issued_canceled or cfdis_received_canceled %}
-                                <h2>CFDIs cancelados</h2>
                                 {% endif %}
 
                                 {% if cfdis_issued_canceled is defined %}
-                                <h3>CFDIS Emitidos Cancelados</h3>
+                                <h1>CFDIS Emitidos Cancelados</h1>
                                 {% if cfdis_issued_canceled %}
                                 <section>
                                     <table class="cfdi-table">
                                         <thead>
                                             <tr class="cfdi-table-row">
+                                                <th>Fecha Emisión</th>
                                                 <th>Folio</th>
                                                 <th>Serie</th>
                                                 <th>UUID</th>
-                                                <th>Emisor</th>
                                                 <th>Receptor</th>
-                                                <th>Fecha Timbrado</th>
                                                 <th>Fecha Cancelación</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {% for cfdi in cfdis_issued_canceled %}
                                             <tr class="cfdi-table-row">
+                                                <td>{{cfdi.FechaCertificacionSat}}</td>
                                                 <td>{{cfdi.Folio or ""}}</td>
                                                 <td>{{cfdi.Serie or ""}}</td>
                                                 <td>{{cfdi.UUID}}</td>
-                                                <td>{{cfdi.NombreEmisor}}</td>
                                                 <td>{{cfdi.NombreReceptor}}</td>
-                                                <td>{{cfdi.FechaCertificacionSat}}</td>
                                                 <td>{{cfdi.FechaCancelacion}}</td>
                                             </tr>
                                             {% endfor %}
@@ -260,38 +252,41 @@
                                     </table>
                                 </section>
                                 {% if user %}
-                                <a class="button" href={{ "https://cpaudita.com/cfdi-issued?cid=" + company.id + "&type=ingress&state=inactive&cancelled=cmea" }}><strong>Corregir problemas</strong></a>
+                                <a class="button" href={{ "https://cpaudita.com/cfdi-issued?cid=" + company.id
+                                    + "&type=ingress&period=" + date.year + "-" + date.month
+                                    + "&state=inactive&cancelled=cmea" }}><strong>Ver más detalles</strong></a>
+                                    <br><br><br>
                                 {% endif %}
                                 {% else %}
-                                <p>No hay CFDIs emitidos cancelados</p>
+                                <p>No hay CFDIs emitidos cancelados</p> <br><br><br>
                                 {% endif %}
                                 {% endif %}
 
+                                
+
                                 {% if cfdis_received_canceled is defined %}
-                                <h3>CFDIS Recibidos Cancelados</h3>
+                                <h1>CFDIS Recibidos Cancelados</h1>
                                 {% if cfdis_received_canceled %}
                                 <section>
                                     <table class="cfdi-table">
                                         <thead>
                                             <tr class="cfdi-table-row">
+                                                <th>Fecha Emisión</th>
                                                 <th>Folio</th>
                                                 <th>Serie</th>
                                                 <th>UUID</th>
                                                 <th>Emisor</th>
-                                                <th>Receptor</th>
-                                                <th>Fecha Timbrado</th>
                                                 <th>Fecha Cancelación</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {% for cfdi in cfdis_received_canceled %}
                                             <tr class="cfdi-table-row">
+                                                <td>{{cfdi.FechaCertificacionSat}}</td>
                                                 <td>{{cfdi.Folio or ""}}</td>
                                                 <td>{{cfdi.Serie or ""}}</td>
                                                 <td>{{cfdi.UUID}}</td>
                                                 <td>{{cfdi.NombreEmisor}}</td>
-                                                <td>{{cfdi.NombreReceptor}}</td>
-                                                <td>{{cfdi.FechaCertificacionSat}}</td>
                                                 <td>{{cfdi.FechaCancelacion}}</td>
                                             </tr>
                                             {% endfor %}
@@ -299,25 +294,28 @@
                                     </table>
                                 </section>
                                 {% if user %}
-                                <a class="button" href={{ "https://cpaudita.com/cfdi-received?cid=" + company.id + "&type=ingress&period=2022-abril&state=inactive&cancelled=cmea" }}><strong>Corregir problemas</strong></a>
+                                <a class="button" href={{ "https://cpaudita.com/cfdi-received?cid=" + company.id
+                                    + "&type=ingress&period=" + date.year + "-" + date.month
+                                    + "&state=inactive&cancelled=cmea" }}><strong>Ver más detalles</strong></a>
+                                    <br><br><br>
                                 {% endif %}
                                 {% else %}
-                                <p>No hay CFDIs recibidos cancelados</p>
+                                <p>No hay CFDIs recibidos cancelados</p> <br><br><br>
                                 {% endif %}
                                 {% endif %}
 
                                 {% if cfdis_with_efos is defined %}
-                                <h3>CFDIS con EFOS</h3>
+                                <h1>CFDIS con EFOS</h1>
                                 {% if cfdis_with_efos %}
                                 <section>
                                     <table class="cfdi-table">
                                         <thead>
                                             <tr class="cfdi-table-row">
+                                                <th>Fecha Emisión</th>
                                                 <th>Folio</th>
                                                 <th>Serie</th>
                                                 <th>UUID</th>
                                                 <th>Emisor</th>
-                                                <th>Fecha Timbrado</th>
                                                 <th>Estatus</th>
                                                 <th>Total</th>
                                             </tr>
@@ -325,11 +323,11 @@
                                         <tbody>
                                             {% for cfdi in cfdis_with_efos %}
                                             <tr class="cfdi-table-row">
+                                                <td>{{cfdi.FechaCertificacionSat}}</td>
                                                 <td>{{cfdi.Folio or ""}}</td>
                                                 <td>{{cfdi.Serie or ""}}</td>
                                                 <td>{{cfdi.UUID}}</td>
                                                 <td>{{cfdi.NombreEmisor}}</td>
-                                                <td>{{cfdi.FechaCertificacionSat}}</td>
                                                 <td>{{cfdi.Estatus}}</td>
                                                 <td>{{"${:,.2f}".format(cfdi.Total)}}</td>
                                             </tr>
@@ -338,14 +336,17 @@
                                     </table>
                                 </section>
                                 {% if user %}
-                                <a class="button" href={{ "https://cpaudita.com/efos?cid=" + company.id + "&type=ingress&state=active" }}><strong>Corregir problemas</strong></a>
+                                <a class="button" href={{ "https://cpaudita.com/efos?cid=" + company.id
+                                    + "&type=ingress&period=" + date.year + "-" + date.month + "&state=active"
+                                    }}><strong>Ver más detalles</strong></a>
                                 {% endif %}
                                 {% else %}
-                                <p>No hay CFDIs con efos erróneos</p>
+                                <p>No hay CFDIs con efos erróneos</p> <br><br><br>
                                 {% endif %}
                                 {% endif %}
 
-                                <p><i>*La información comprende desde el último correo emitido al día en que se
+                                <p><i>*La información comprende desde la fecha del correo previo recibido hasta el día
+                                        en que se
                                         recibe este correo.</i></p>
                             </div>
                         </td>
@@ -357,14 +358,23 @@
                                     <td align="center">
                                         <p>¡Estamos aquí para ayudar!</p>
                                         <p>Si tienes alguna pregunta, ponte en contacto con nosotros a través de <a
-                                                id="correo">soporte@solucioncp.com</a></p>
+                                                style="text-decoration: none;color: black;">soporte@ezaudita.com</a>
+                                        </p>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td align="left">
-                                        <a href="https://www.facebook.com/SolucioncpIdeas"><img
-                                                src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/facebook_circle_color-256.png"
-                                                alt="facebook-logo" width="40px" height="40px"></a>
+                                    <td align="center">
+                                        <table style="border-spacing: 10px;">
+                                            <tr>
+                                                <td><a href="https://cpaudita.com" style="color:#274e75; font-weight: 600;">cpaudita.com</a></td>
+                                                <td><a href="https://www.facebook.com/SolucioncpIdeas"
+                                                        style="display: flex;justify-content: center; color:#274e75; font-weight: 600;"><!--<img
+                                                            src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/facebook_circle_color-256.png"
+                                                            alt="facebook-logo" width="40px" height="40px">-->
+                                                        <p>facebook/SoluciónCP</p>
+                                                    </a></td>
+                                            </tr>
+                                        </table>
                                     </td>
                                 </tr>
                             </table>

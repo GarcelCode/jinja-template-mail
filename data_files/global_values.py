@@ -1,16 +1,21 @@
 user = {
-    'name':'samuel',
+    'name':'Samuel',
     'email':'samuel.garcia@ezkorp.com',
     'password':'9BzTAh:7',
     'registered':True,
 }
 
 company = {
-    'id': "299",
+    'id': "232",
     'name':'EZKORP',
 }
 
 appUrl = 'https://cpaudita.com'
+
+date = {
+    'year': '2022',
+    'month': 'abril',
+}
 
 cfdi_issued =[{
         'Folio':'6217',
@@ -18,7 +23,7 @@ cfdi_issued =[{
         'UUID':'80373ac3-920b-43d3-bcf5-9bd84dbfefc1',
         'NombreEmisor':'Fauna Borja',
         'NombreReceptor':'Salomé Ronen',
-        'FechaCertificacionSat':'2022-12-04 06:16:17',
+        'FechaCertificacionSat': "2022-12-04",
         'errors_string':'Ingreso con Método de pago PUE y Forma de pago igual a 99',
     },{
         'Folio':'',
@@ -26,7 +31,7 @@ cfdi_issued =[{
         'UUID':'4b135e43-f643-4618-8877-6cfe244b8c5c',
         'NombreEmisor':'Myeong-Suk Sithembile',
         'NombreReceptor':'Allon Indy',
-        'FechaCertificacionSat':'2022-12-25 13:43:45',
+        'FechaCertificacionSat': "2022-12-25",
         'errors_string':'Ingreso con Método de pago PUE y Forma de pago igual a 99',
     },{
         'Folio':'6443',
@@ -34,7 +39,7 @@ cfdi_issued =[{
         'UUID':'a79a5910-e326-4348-931e-220f3f15247a',
         'NombreEmisor':'Silviya Greta',
         'NombreReceptor':'Hari Marita',
-        'FechaCertificacionSat':'2023-02-15 15:45:20',
+        'FechaCertificacionSat': "2023-02-15",
         'errors_string':'Egreso sin CFDI Relacionado',
     },{
         'Folio':'9297',
@@ -42,7 +47,7 @@ cfdi_issued =[{
         'UUID':'b837d11e-94a6-4603-9c12-0352c6c620f0',
         'NombreEmisor':'Oinone Epaphroditos',
         'NombreReceptor':'Waldo Stephanos',
-        'FechaCertificacionSat':'2022-12-01 09:49:15',
+        'FechaCertificacionSat': "2022-12-01",
         'errors_string':'Ingreso con Método de pago PUE y Forma de pago igual a 99',
     },{
         'Folio':'5301',
@@ -50,7 +55,7 @@ cfdi_issued =[{
         'UUID':'a08d6ac6-e322-4d53-a872-b55bd14fbb5e',
         'NombreEmisor':'Zenon Willibald',
         'NombreReceptor':'Laurenz Şenol',
-        'FechaCertificacionSat':'2023-02-21 12:48:14',
+        'FechaCertificacionSat': "2023-02-21",
         'errors_string':'Egreso sin CFDI Relacionado',
     },{
         'Folio':'9095',
@@ -58,7 +63,7 @@ cfdi_issued =[{
         'UUID':'9786f082-892c-4430-a235-9cbb10a2602b',
         'NombreEmisor':'Guiscard Ariadne',
         'NombreReceptor':'Li Meta',
-        'FechaCertificacionSat':'2022-04-16 14:02:58',
+        'FechaCertificacionSat': "2022-04-16",
         'errors_string':'Ingreso con Método de pago PUE y Forma de pago igual a 99',
     },{
         'Folio':'',
@@ -66,7 +71,7 @@ cfdi_issued =[{
         'UUID':'bef93e38-f047-49f9-80e2-82e49d8b9d9e',
         'NombreEmisor':'Widad Shahid',
         'NombreReceptor':'Ramachandra Gayane',
-        'FechaCertificacionSat':'2022-07-02 01:21:30',
+        'FechaCertificacionSat': "2022-07-02",
         'errors_string':'Ingreso con Método de pago PUE y Forma de pago igual a 99',
     },{
         'Folio':'',
@@ -74,7 +79,7 @@ cfdi_issued =[{
         'UUID':'16820acf-312c-4d71-87df-c57b93e50166',
         'NombreEmisor':'Eva Eteri',
         'NombreReceptor':'Michał Savitr',
-        'FechaCertificacionSat':'2022-04-09 01:48:00',
+        'FechaCertificacionSat': "2022-04-09",
         'errors_string':'Egreso sin CFDI Relacionado',
     },{
         'Folio':'',
@@ -82,7 +87,7 @@ cfdi_issued =[{
         'UUID':'5599c335-f5e6-4228-b97c-c7481ca6a709',
         'NombreEmisor':'Ádám Zenia',
         'NombreReceptor':'Archelaos Olivie',
-        'FechaCertificacionSat':'2022-06-16 20:03:36',
+        'FechaCertificacionSat': "2022-06-16",
         'errors_string':'Egreso sin CFDI Relacionado',
     },{
         'Folio':'3942',
@@ -90,7 +95,7 @@ cfdi_issued =[{
         'UUID':'40a4938c-1562-4198-872a-27910777ef08',
         'NombreEmisor':'Eachann Ovidia',
         'NombreReceptor':'Damián Fearghas',
-        'FechaCertificacionSat':'2022-11-05 02:51:49',
+        'FechaCertificacionSat': "2022-11-05",
         'errors_string':'Egreso sin CFDI Relacionado',
 }]
 
